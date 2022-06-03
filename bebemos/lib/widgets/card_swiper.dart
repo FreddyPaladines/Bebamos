@@ -50,7 +50,7 @@ class Card_swiper  extends StatelessWidget {
                     //Imagen
 
                     GestureDetector(
-                      onTap: ()=> Navigator.pushNamed(context, "king"),
+                      onTap: ()=> Navigator.pushNamed(context, juegos[index].ruta),
                       child: ClipRRect(
                         borderRadius: BorderRadius.circular(20),
                         child: FadeInImage(
