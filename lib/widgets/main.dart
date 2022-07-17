@@ -12,7 +12,11 @@ import 'package:bebemos/screens/lenguaje.dart';
 import 'package:bebemos/screens/personas.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
+import '../games/Botella/intrucciones_Botella.dart';
+import '../games/QueMemeSoy/intrucciones_Meme.dart';
+import '../games/YoNunca/intrucciones_Nunca.dart';
+import '../games/intrucciones_Kings.dart';
+import '../games/intrucciones_Verdad.dart';
 import 'menu_Juegos.dart';
 
 
@@ -42,6 +46,11 @@ class MyApp extends StatelessWidget {
         "YoNuncaPrincipal": ( _ ) =>YoNuncaPrincipal(),
         "JuegoBotella": ( _ ) =>Juego_Botella(),
         "MenuJuegos": ( _ ) =>Menujuego(),
+        "InstruccionesKings": ( _ ) =>InstruccionesKings(),
+        "InstruccionesVerdad": ( _ ) =>InstruccionesVerdad(),
+        "InstruccionesBotella": ( _ ) =>InstruccionesBotella(),
+        "InstruccionesMeme": ( _ ) =>InstruccionesMeme(),
+        "InstruccionesNunca": ( _ ) =>InstruccionesNunca(),        
         
         
         

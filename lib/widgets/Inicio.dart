@@ -21,6 +21,7 @@ class Inicio extends StatelessWidget {
             BackgroundInicio(),
             FondoSol(),
             CuerpoInicio(),
+            Firma(),
 
 
             ],),
@@ -50,12 +51,9 @@ class FondoSol extends StatelessWidget {
                   repeat: true,
                   height: size.height*0.55,
                   width:size.width*1,
-                  fit: BoxFit.fill,
-                  
+                  fit: BoxFit.fill, 
                   ),
               ),
-
-      
       ],
 
 
@@ -74,16 +72,11 @@ class CuerpoInicio extends StatelessWidget {
       children: [
         SizedBox(height: size.height*0.05,),
         Center(
-          child:Text("¡Bebamos!", 
+          child:Text("¡Bebamos!",
                       style: GoogleFonts.greatVibes(
                         fontSize:80,
                         color: Colors.black,
-                      
-
                         ),
-
-                      
-
                       ), 
         ),
         SizedBox(height: size.height*0.03,),
@@ -97,38 +90,52 @@ class CuerpoInicio extends StatelessWidget {
                           image: AssetImage("assets/FondoShot.png"),
                           fit:BoxFit.cover,
                           height: size.height*0.5,
-
-
         ),
                       ),
                       ),
                       ),
-        Container(
-              height:size.height*0.20 ,
-              width: size.width*0.6,
-          
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(16),
-                gradient: LinearGradient(
+
+
+        GestureDetector(
+          onTap: ()=> Navigator.pushNamed(context,"MenuJuegos" ),
+          child: Container(
+                height:size.height*0.20 ,
+                width: size.width*0.6,
+            
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  gradient: LinearGradient(
+                            
+                   begin:  Alignment.topCenter,
+                   end:Alignment.bottomRight,
+                   stops: [0.01,1],
+                   colors: [Color.fromARGB(255, 239, 233, 239),Color.fromARGB(255, 246, 211, 70)]
+                  ),
+
+                   boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 7,
+                              offset: Offset(7,8)
+
+
+                            )
+                          ]
+                           ), 
+                child: Center(
+                  child: Text("A DARLE", 
+                  style: SplashScreen.style,
+
+
+
+                            ),
+
                           
-                 begin:  Alignment.topCenter,
-                 end:Alignment.bottomRight,
-                 stops: [0.01,1],
-                 colors: [Color.fromARGB(255, 252, 244, 172),Color.fromARGB(255, 235, 145, 43)]
-                ),
-                         ), 
-              child: Center(
-                child: Text("Iniciar juegos", 
-                style: SplashScreen.style,
-
-
 
                           ),
-
-                        
-
-                        ),
-              ), 
+                ),
+        ), 
 
         
 
@@ -144,6 +151,34 @@ class CuerpoInicio extends StatelessWidget {
 
 
 
+class Firma extends StatelessWidget {
+  const Firma({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    final size= MediaQuery.of(context).size;
+    return Column(
+      children: [
+        SizedBox(height: size.height*0.97,),
+
+          
+        Align(
+            alignment: Alignment.centerRight,
+            child: Text("Por: Freddy Paladines L     ",
+            style: TextStyle(
+              color: Colors.black )
+            ))
+          
+
+        
+      ],
+
+
+
+    );
+}
+
+}
 
 
 
@@ -181,7 +216,7 @@ class BackgroundInicio extends StatelessWidget {
         begin: Alignment.bottomLeft,
           end: Alignment.topRight,
           stops: [0.01,0.9],
-          colors: [Color.fromARGB(255, 243, 180, 128),Color.fromARGB(255, 255, 255, 255)]
+          colors: [Color(0xFFFDECEF),Color(0xFFFDECEF)]
       ),
     ),
     );

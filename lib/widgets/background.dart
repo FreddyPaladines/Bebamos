@@ -19,3 +19,34 @@ class Background extends StatelessWidget {
     );
   }
 }
+
+
+
+
+
+class BackgroundColor extends StatelessWidget {
+  
+  const BackgroundColor({
+    Key? key,
+    required this.colorprimario,
+    required this.colorsecundario,
+    }) : super(key: key);
+    final Color colorprimario;
+    final Color colorsecundario;
+
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+        begin: Alignment.bottomLeft,
+          end: Alignment.topRight,
+          stops: [0.01,0.9],
+          colors: [colorprimario,colorsecundario]
+      ),
+    ),
+    );
+  }
+}

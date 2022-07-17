@@ -3,6 +3,8 @@ import 'package:bebemos/widgets/background.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import 'BackgroundInstruccionesGeneral.dart';
+
 class NormalVerdadoReto extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -13,16 +15,19 @@ class NormalVerdadoReto extends StatelessWidget {
         title: Text('Bebamos: Juego para beber con amigos'),
         elevation: 0,
         actions: [
-          IconButton(onPressed: (){}, 
-          icon: Icon(Icons.add_box))
+          IconButton(onPressed: (){
+            Navigator.pushNamed(context,"MenuJuegos" );
+          }, 
+          icon: Icon(Icons.videogame_asset))
         ],
       ),
       body: Scaffold(
         body: Stack(
           children: [
-            
-            Background(),
-            
+            BackgroundgeneralInstru(
+              colorfondo: Color(0xff28A5B6), 
+              imagen1: 'assets/Instrucciones_Verdad2.png', 
+              imagen2: 'assets/Instrucciones_Verdad3.png',),
             BotonVerdad(),
             BotonDesafio(),
 
@@ -37,9 +42,10 @@ class NormalVerdadoReto extends StatelessWidget {
 class BotonVerdad extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
+     final size= MediaQuery.of(context).size;
     return Column(
       children: [
-        SizedBox(height: 100,),
+        SizedBox(height: size.height*0.2,),
 
 
         Padding(
@@ -58,6 +64,16 @@ class BotonVerdad extends StatelessWidget{
                   Container(     
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(15)),
+                    boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.5),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: Offset(7,8)
+
+
+                          )
+                        ]
                   ),
 
 
@@ -120,9 +136,10 @@ class BotonVerdad extends StatelessWidget{
 class BotonDesafio extends StatelessWidget{
   @override
   Widget build(BuildContext context) {
+     final size= MediaQuery.of(context).size;
     return Column(
       children: [
-        SizedBox(height: 300,),
+        SizedBox(height: size.height*0.45,),
 
 
         Padding(
@@ -141,6 +158,16 @@ class BotonDesafio extends StatelessWidget{
                   Container(     
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.all(Radius.circular(15)),
+                    boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.5),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: Offset(7,8)
+
+
+                          )
+                        ]
                   ),
 
 

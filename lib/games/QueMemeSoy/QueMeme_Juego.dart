@@ -19,9 +19,35 @@ import '../kingV3.dart';
     {"id":7,"Imagen":"meme9.JPG","Nombre":"Niña fondo casa en llamas"},
     {"id":8,"Imagen":"meme10.JPG","Nombre":"Niña fondo casa en llamas"},
     {"id":9,"Imagen":"meme11.JPG","Nombre":"Niña fondo casa en llamas"},
-    {"id":10,"Imagen":"meme12.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":10,"Imagen":"meme12.JPG","Nombre":"Pikachu sorprendido"},
     {"id":11,"Imagen":"meme13.JPG","Nombre":"Niña fondo casa en llamas"},
-    
+    {"id":12,"Imagen":"meme14.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":13,"Imagen":"meme15.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":14,"Imagen":"meme16.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":15,"Imagen":"meme17.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":16,"Imagen":"meme18.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":17,"Imagen":"meme19.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":18,"Imagen":"meme20.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":19,"Imagen":"meme21.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":20,"Imagen":"meme22.JPG","Nombre":"Pikachu sorprendido"},
+    {"id":21,"Imagen":"meme23.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":22,"Imagen":"meme24.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":23,"Imagen":"meme25.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":24,"Imagen":"meme26.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":25,"Imagen":"meme27.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":26,"Imagen":"meme28.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":27,"Imagen":"meme29.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":28,"Imagen":"meme30.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":29,"Imagen":"meme31.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":30,"Imagen":"meme32.JPG","Nombre":"Pikachu sorprendido"},
+    {"id":31,"Imagen":"meme33.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":32,"Imagen":"meme34.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":33,"Imagen":"meme35.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":34,"Imagen":"meme36.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":35,"Imagen":"meme37.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":36,"Imagen":"meme38.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":37,"Imagen":"meme39.JPG","Nombre":"Niña fondo casa en llamas"},
+    {"id":38,"Imagen":"meme40.JPG","Nombre":"Niña fondo casa en llamas"},
   ];
 
   
@@ -62,14 +88,16 @@ class _QueMemejuegoState extends State<QueMemejuego> {
         title: Text('Bebamos: Juego para beber con amigos'),
         elevation: 0,
         actions: [
-          IconButton(onPressed: (){}, 
-          icon: Icon(Icons.add_box))
+          IconButton(onPressed: (){
+            Navigator.pushNamed(context,"MenuJuegos" );
+          }, 
+          icon: Icon(Icons.videogame_asset))
         ],
       ),
       body: Scaffold(
         body: Stack(
           children: [
-            Background(),
+            BackgroundColor(colorprimario: Colors.white, colorsecundario: Colors.white,),
             Cronometro(),
 
 
@@ -100,11 +128,11 @@ class Cronometro extends StatefulWidget {
 class _CronometroState extends State<Cronometro> {
     //---------Funcion de contador--------
     
-  static const maxSeconds = 60;
+  static const maxSeconds = 15;
   int seconds = maxSeconds;
   Timer? timer;
   Object? imagenValor = '';
-  bool mensajeMostrar = true;
+  bool mensajeMostrar = false;
 
   
   
@@ -142,9 +170,9 @@ class _CronometroState extends State<Cronometro> {
 
 
   void startTimer (){
-    timer =Timer.periodic(Duration(microseconds: 1), (_) { 
+    timer =Timer.periodic(Duration(seconds: 1), (_) { 
 
-    if (seconds>0 && counter <5){
+    if (seconds>0 && counter <40){
       setState(()=>seconds--);
       
 
@@ -157,7 +185,7 @@ class _CronometroState extends State<Cronometro> {
       //} 
       
       
-     else if (seconds<1 && counter <5) {
+     else if (seconds<1 && counter <40) {
         stopTimer(reset: true);
         increase();
         //counter++;
@@ -166,7 +194,7 @@ class _CronometroState extends State<Cronometro> {
 
       else  {
         timer?.cancel();
-        mensajeMostrar = true;
+        mensajeMostrar = false;
         //counter++;
 
       }
@@ -207,16 +235,28 @@ class _CronometroState extends State<Cronometro> {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
                   children: [
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          primary: Color(0xffFCD23D),
+                           onPrimary: Colors.black,
+                           textStyle: TextStyle(fontSize: 20)
+      ),                     
+                      child:Text( 'Pausa'), 
+                      onPressed:  (){stopTimer(reset: false);}),
 
-                    ButtonWidget(
-                      text: 'Pausa', 
-                      onCLicked:  (){stopTimer(reset: false);
-                      
-                      }),
                     SizedBox(width: 10,),
-                    ButtonWidget(
-                      text: 'Cancel', 
-                      onCLicked:  (){stopTimer();}),
+                    ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                           primary: Color(0xffFCD23D),
+                           onPrimary: Colors.black,
+                           textStyle: TextStyle(fontSize: 20)
+      ),
+                     
+                      child:Text( 'Siguiente'), 
+                      onPressed:  (){
+                         stopTimer(reset: true);
+                         increase();
+                      }),
 
                   ],
                 ),
@@ -225,23 +265,30 @@ class _CronometroState extends State<Cronometro> {
           
       
       :
-    
-    ButtonWidget(
-      text: 'Comenzar', 
-      onCLicked:  (){
+    ElevatedButton(
+      style: ElevatedButton.styleFrom(
+        minimumSize: Size(150, 75),
+        primary: Color(0xffFCD23D),
+        onPrimary: Colors.black,
+        textStyle: TextStyle(fontSize: 20)
+      ),
+        child:Text( 'Comenzar'), 
+        
+        onPressed:  (){
         if (counter >0){
-          mensajeMostrar = true;
+          mensajeMostrar = false;
           startTimer();
 
         }
         else  {
           startTimer();
+          }}
 
-          
-          }
-        
-
-      });
+      
+      
+      
+      
+      );  
 
 
 }
@@ -272,6 +319,7 @@ class _CronometroState extends State<Cronometro> {
                   Text("$seconds",
                   style: TextStyle(
                     fontSize: 80,
+                    color:Colors.black,
                     fontWeight: FontWeight.bold),
                   
                   ),

@@ -2,6 +2,8 @@ import 'dart:math';
 import 'package:flip_card/flip_card.dart';
 import 'package:flutter/material.dart';
 import 'package:bebemos/widgets/background.dart';
+
+import 'intrucciones_Kings.dart';
 List<int> newList = [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51];
 List listaId = shuffle(newList);
 
@@ -200,20 +202,26 @@ class _CounterScreenState extends State<KingjuegoV3> {
     
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xffd8c500),
         title: Text('Bebamos: Juego para beber con amigos'),
         elevation: 0,
         actions: [
-          IconButton(onPressed: (){}, 
-          icon: Icon(Icons.add_box))
+          IconButton(onPressed: (){
+            Navigator.pushNamed(context,"MenuJuegos" );
+          }, 
+          icon: Icon(Icons.videogame_asset))
         ],
       ),
+
 
 
       
 
 
-      body: cuerpoKings(counterMas, fontSize30),
+      body: 
+      
+      
+      cuerpoKings(counterMas, fontSize30),
+      
       
 
     
@@ -234,94 +242,111 @@ class _CounterScreenState extends State<KingjuegoV3> {
     );
   }
 
-  Center cuerpoKings(int counterMas, TextStyle fontSize30) {
-    return Center(
-      
+  Stack cuerpoKings(int counterMas, TextStyle fontSize30) {
+    return Stack(
+      children: [
+        Container(
+        decoration: BoxDecoration(
+          color: Color(0xFFFDECEF)
+    
+      ),
+      ),
+
+        Center(
 
 
 
-      child: Column(
+
+          child: Column(
 
 
-        children: [
-          SizedBox(height: 30,),
-
-          
-
-
-
-          //-------------------------------Contador de Kings---------------------------------------------------
-          Row(
             children: [
+              SizedBox(height: 30,),
 
-
-              Container(
-            padding: const EdgeInsets.all(20),
-
-
-          ),
-              Text("Kings sacados ", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-              Text("$kingcounter   ", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),),
-              Text("                                      "),
-              if (kings.contains(1) )
-              ImagenesKings(imagenValor: "K_Brillo.JPG"),
-              if (kings.contains(2) )
-              ImagenesKings(imagenValor: "K_Corazon.JPG"),    
-              if (kings.contains(3) )
-              ImagenesKings(imagenValor: "K_Negro.JPG"),           
-              if (kings.contains(4) )
-              ImagenesKings(imagenValor: "K_Trevol.JPG"),    
-
-            ],
-          ),
-
-          SizedBox(height: 30,),
+              
 
 
 
+              //-------------------------------Contador de Kings---------------------------------------------------
+              Row(
+                children: [
 
-          Text("$nombreValor", style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),),
-      
-          SizedBox(height: 30,),
-          Row(
-          children: [
+
+                  Container(
+                padding: const EdgeInsets.all(20),
+
+
+              ),
+                  Text("Kings sacados ", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color:Colors.black),),
+                  Text("$kingcounter   ", style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color:Colors.black),),
+                  Text("                            "),
+                  if (kings.contains(1) )
+                  ImagenesKings(imagenValor: "K_Brillo.JPG"),
+                  if (kings.contains(2) )
+                  ImagenesKings(imagenValor: "K_Corazon.JPG"),    
+                  if (kings.contains(3) )
+                  ImagenesKings(imagenValor: "K_Negro.JPG"),           
+                  if (kings.contains(4) )
+                  ImagenesKings(imagenValor: "K_Trevol.JPG"),    
+
+                ],
+              ),
+
+              SizedBox(height: 30,),
+
+
+
+
+              Text("$nombreValor", style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color:Colors.black),),
+          
+              SizedBox(height: 30,),
+              Row(
+              children: [
+                
+
+            //Al crear el expanded le dices con el flatbutton que pertenece al objeto en cuestion 
+                Expanded(
             
+                child:  FlatButton(
+                onPressed: (){
+                  increase();
 
-        //Al crear el expanded le dices con el flatbutton que pertenece al objeto en cuestion 
-            Expanded(
-        
-            child:  FlatButton(
-            onPressed: (){
-              increase();
+                }, 
+                
 
-            }, 
+                child: 
+                ClipRRect(
+                 borderRadius: BorderRadius.circular(8.0),
+                     child:
+                
+                Image.asset("assets/$imagenValor",height: 250,))
+                ))
 
-            child: Image.asset("assets/$imagenValor",height: 250,))
-          )
-
-      ],),
-
-
-
-
+          ],),
 
 
 
-          //----------------------------------------------------------------------------------------
-      SizedBox(height: 30,),
+
+
+
+
+              //----------------------------------------------------------------------------------------
+          SizedBox(height: 30,),
 
 
 //-------------------------Descripcion-----------------------------------
-      
-      Container(
-        margin: EdgeInsets.symmetric(horizontal:30),
-        child: Text("$descripcionValor",style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),)),
-      SizedBox(height: 30,),
+          
+          Container(
+            margin: EdgeInsets.symmetric(horizontal:30),
+            child: Text("$descripcionValor",style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color:Colors.black),)),
+          SizedBox(height: 30,),
 
 //-------------------------Cartas-----------------------------------
-          Text( 'Cartas $counterMas/52', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold) ),
-        ],
-      ),
+              Text( 'Cartas $counterMas/52', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color:Colors.black) ),
+            ],
+          ),
+        ),
+      ],
     );
   }
 }
@@ -338,7 +363,7 @@ class ImagenesKings extends StatelessWidget {
   Widget build(BuildContext context) {
     return new Image(
     image: new AssetImage('assets/$imagenValor'),
-    height: 50,
+    height: 60,
     alignment: Alignment.center);
   }
 }
@@ -367,13 +392,14 @@ class CustomFloatingActions extends StatelessWidget {
 
         FloatingActionButton(
           child: const Icon( Icons.arrow_left ),
+          backgroundColor:Color(0xFFE928A0),
           onPressed: () => decreaseFn(),
         ),
         
 
         FloatingActionButton(
             child: const Icon( Icons.refresh ),
-            
+            backgroundColor:Color(0xFFE928A0),
             onPressed: () {
 
   
@@ -385,6 +411,7 @@ class CustomFloatingActions extends StatelessWidget {
 
         FloatingActionButton(
           child: const Icon( Icons.arrow_right ),
+          backgroundColor:Color(0xFFE928A0),
           onPressed: () => increaseFn(),
 
         ),

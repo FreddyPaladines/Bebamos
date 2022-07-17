@@ -5,7 +5,12 @@ import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
+import '../games/Botella/intrucciones_Botella.dart';
 import '../games/QueMemeSoy/QueMeme_Juego.dart';
+import '../games/QueMemeSoy/intrucciones_Meme.dart';
+import '../games/YoNunca/intrucciones_Nunca.dart';
+import '../games/intrucciones_Kings.dart';
+import '../games/intrucciones_Verdad.dart';
 //import 'package:concentric_transition/concentric_transition.dart';
 
 class Menujuego extends StatelessWidget {
@@ -18,8 +23,10 @@ class Menujuego extends StatelessWidget {
         title: Text('Bebamos: Juego para beber con amigos'),
         elevation: 0,
         actions: [
-          IconButton(onPressed: (){}, 
-          icon: Icon(Icons.keyboard_return))
+          IconButton(onPressed: (){
+            Navigator.pushNamed(context,"MenuJuegos" );
+          }, 
+          icon: Icon(Icons.videogame_asset))
         ],
         )
       ,
@@ -82,48 +89,54 @@ class _SplashScreen extends State<SplashScreen> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Stack(
-            children: [
-              Center(
-                child: Lottie.asset(
-                  "assets/confetti.json",
-                  repeat: false,
-                  height: 500,
-                  width:400
-                  
-                  ),
-              ),
-              Column(
-                children: [
-                  Center(
-                    child: Image.asset(
-                      'assets/Kings.png',
-                      fit: BoxFit.cover,
-                      height:300,
-                      width:300,
+          GestureDetector(
+            onTap: (){
+              Get.to(() => InstruccionesKings());
+
+            },
+            child: Stack(
+              children: [
+                Center(
+                  child: Lottie.asset(
+                    "assets/confetti.json",
+                    repeat: false,
+                    height: 500,
+                    width:400
+                    
                     ),
-                  
-                  ),
-                  SizedBox(height:200),
-                ],
-              ),
-            Column(
-            children: const [
-
-              SizedBox(height:400),
-
-              Center(
-                child: Text(
-                  "Happy Kings ",
-                  style: SplashScreen.style,
                 ),
-              ),
-
-            ],
-          ),
-
-            
-            ],
+                Column(
+                  children: [
+                    Center(
+                      child: Image.asset(
+                        'assets/Kings.png',
+                        fit: BoxFit.cover,
+                        height:300,
+                        width:300,
+                      ),
+                    
+                    ),
+                    SizedBox(height:200),
+                  ],
+                ),
+              Column(
+              children: const [
+          
+                SizedBox(height:400),
+          
+                Center(
+                  child: Text(
+                    "Happy Kings ",
+                    style: SplashScreen.style,
+                  ),
+                ),
+          
+              ],
+            ),
+          
+              
+              ],
+            ),
           ),
 
         ],
@@ -134,7 +147,7 @@ class _SplashScreen extends State<SplashScreen> {
 
 
 
-
+//Navigator.pushNamed(context,"kingv3" );
 
     Container(
       color: const Color(0xFFF12EA7),
@@ -143,59 +156,65 @@ class _SplashScreen extends State<SplashScreen> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Stack(
-            children: [
-              Center(
-                child: Lottie.asset(
-                  "assets/BackgroundNunca.json",
-                  repeat: true,
-                  height: 300,
-                  width:400
-                  
-                  ),
-              ),
-              Column(
-                children: [
-                  Center(
-                    child: Image.asset(
-                      'assets/Nunca.png',
-                      fit: BoxFit.cover,
-                      height:300,
-                      width:300,
+        GestureDetector(
+            onTap: (){
+              Get.to(() => InstruccionesNunca());
+
+            },
+            child: Stack(
+              children: [
+                Center(
+                  child: Lottie.asset(
+                    "assets/BackgroundNunca.json",
+                    repeat: true,
+                    height: 300,
+                    width:400
+                    
                     ),
-                  
+                ),
+                Column(
+                  children: [
+                    Center(
+                      child: Image.asset(
+                        'assets/Nunca.png',
+                        fit: BoxFit.cover,
+                        height:300,
+                        width:300,
+                      ),
+                    
+                    ),
+                    SizedBox(height:200),
+                  ],
+                ),
+              Column(
+              children:  [
+          
+                SizedBox(height:330),
+                Center(
+                  child: Column(
+              children:  [
+                  Text(
+                    "Yo",
+                    style: SplashScreen.style,
                   ),
-                  SizedBox(height:200),
-                ],
-              ),
-            Column(
-            children:  [
-
-              SizedBox(height:330),
-              Center(
-                child: Column(
-            children:  [
-                Text(
-                  "Yo",
-                  style: SplashScreen.style,
+                  Text(
+                    "Nunca",
+                    style: SplashScreen.style,
+                  ),
+                  Text(
+                    "Nunca",
+                    style: SplashScreen.style,
+                  ),
+              ],
+                  ),
                 ),
-                Text(
-                  "Nunca",
-                  style: SplashScreen.style,
-                ),
-                Text(
-                  "Nunca",
-                  style: SplashScreen.style,
-                ),
-            ],
-                ),
-              ),
-
-            ],
-          ),
-
-            
-            ],
+          
+              ],
+            ),
+          
+              
+              ],
+            ),
           ),
 
         ],
@@ -215,59 +234,65 @@ class _SplashScreen extends State<SplashScreen> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>
         [
-          Stack(
-            children: [
-              Center(
-                child: Lottie.asset(
-                  "assets/BackgroundVerdad.json",
-                  repeat: true,
-                  height: 300,
-                  width:300
-                  
-                  ),
-              ),
-              Column(
-                children: [
-                  Center(
-                    child: Image.asset(
-                      'assets/Verdad o reto2.png',
-                      fit: BoxFit.cover,
-                      height:300,
-                      width:300,
+          GestureDetector(
+            onTap: (){
+              Get.to(() => InstruccionesVerdad());
+
+            },
+            child: Stack(
+              children: [
+                Center(
+                  child: Lottie.asset(
+                    "assets/BackgroundVerdad.json",
+                    repeat: true,
+                    height: 300,
+                    width:300
+                    
                     ),
-                  
+                ),
+                Column(
+                  children: [
+                    Center(
+                      child: Image.asset(
+                        'assets/Verdad o reto2.png',
+                        fit: BoxFit.cover,
+                        height:300,
+                        width:300,
+                      ),
+                    
+                    ),
+                    SizedBox(height:200),
+                  ],
+                ),
+              Column(
+              children:  [
+          
+                SizedBox(height:330),
+                Center(
+                  child: Column(
+              children:  [
+                  Text(
+                    "Verdad",
+                    style: SplashScreen.style,
                   ),
-                  SizedBox(height:200),
-                ],
-              ),
-            Column(
-            children:  [
-
-              SizedBox(height:330),
-              Center(
-                child: Column(
-            children:  [
-                Text(
-                  "Verdad",
-                  style: SplashScreen.style,
+                  Text(
+                    "o",
+                    style: SplashScreen.style,
+                  ),
+                  Text(
+                    "¡Reto!",
+                    style: SplashScreen.style,
+                  ),
+              ],
+                  ),
                 ),
-                Text(
-                  "o",
-                  style: SplashScreen.style,
-                ),
-                Text(
-                  "¡Reto!",
-                  style: SplashScreen.style,
-                ),
-            ],
-                ),
-              ),
-
-            ],
-          ),
-
-            
-            ],
+          
+              ],
+            ),
+          
+              
+              ],
+            ),
           ),
 
         ],
@@ -290,7 +315,7 @@ class _SplashScreen extends State<SplashScreen> {
         children: <Widget>[
           GestureDetector(
             onTap: (){
-              Get.to(QueMemejuego());
+              Get.to(() => InstruccionesMeme());
 
             }
             ,
@@ -363,59 +388,64 @@ class _SplashScreen extends State<SplashScreen> {
         mainAxisSize: MainAxisSize.max,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: <Widget>[
-          Stack(
-            children: [
-              Center(
-                child: Lottie.asset(
-                  "assets/BackgroundBotella.json",
-                  repeat: true,
-                  height: 300,
-                  width:400
-                  
-                  ),
-              ),
-              Column(
-                children: [
-                  Center(
-                    child: Image.asset(
-                      'assets/Botella.png',
-                      fit: BoxFit.cover,
-                      height:300,
-                      width:300,
+          GestureDetector(
+            onTap: (){
+              Get.to(() => InstruccionesBotella());
+            },
+            child: Stack(
+              children: [
+                Center(
+                  child: Lottie.asset(
+                    "assets/BackgroundBotella.json",
+                    repeat: true,
+                    height: 300,
+                    width:400
+                    
                     ),
-                  
+                ),
+                Column(
+                  children: [
+                    Center(
+                      child: Image.asset(
+                        'assets/Botella.png',
+                        fit: BoxFit.cover,
+                        height:300,
+                        width:300,
+                      ),
+                    
+                    ),
+                    SizedBox(height:200),
+                  ],
+                ),
+              Column(
+              children:  [
+          
+                SizedBox(height:330),
+                Center(
+                  child: Column(
+              children:  [
+                  Text(
+                    "Juego",
+                    style: SplashScreen.style,
                   ),
-                  SizedBox(height:200),
-                ],
-              ),
-            Column(
-            children:  [
-
-              SizedBox(height:330),
-              Center(
-                child: Column(
-            children:  [
-                Text(
-                  "Juego",
-                  style: SplashScreen.style,
+                  Text(
+                    "de la",
+                    style: SplashScreen.style,
+                  ),
+                  Text(
+                    "Botella",
+                    style: SplashScreen.style,
+                  ),
+              ],
+                  ),
                 ),
-                Text(
-                  "de la",
-                  style: SplashScreen.style,
-                ),
-                Text(
-                  "Botella",
-                  style: SplashScreen.style,
-                ),
-            ],
-                ),
-              ),
-
-            ],
-          ),
-
-            
-            ],
+          
+              ],
+            ),
+          
+              
+              ],
+            ),
           ),
 
         ],

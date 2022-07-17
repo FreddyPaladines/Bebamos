@@ -13,8 +13,10 @@ class VerdadoReto extends StatelessWidget {
         title: Text('Bebamos: Juego para beber con amigos'),
         elevation: 0,
         actions: [
-          IconButton(onPressed: (){}, 
-          icon: Icon(Icons.add_box))
+          IconButton(onPressed: (){
+            Navigator.pushNamed(context,"MenuJuegos" );
+          }, 
+          icon: Icon(Icons.videogame_asset))
         ],
       ),
       body: Scaffold(

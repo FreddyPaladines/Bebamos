@@ -7,6 +7,8 @@ import 'package:bebemos/widgets/card_swiper.dart';
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 
+import '../BackgroundInstruccionesGeneral.dart';
+
 
 var randomHappylist = (juegosYoNunca.toList()..shuffle()).first;
 
@@ -24,15 +26,23 @@ class YoNuncaPrincipal extends StatelessWidget {
         title: Text('Bebamos: Juego para beber con amigos'),
         elevation: 0,
         actions: [
-          IconButton(onPressed: (){}, 
-          icon: Icon(Icons.keyboard_return))
+          IconButton(onPressed: (){
+            Navigator.pushNamed(context,"MenuJuegos" );
+          }, 
+          icon: Icon(Icons.videogame_asset))
         ],
         )
       ,
       body: Scaffold(
         body: Stack(
           children: [
-            Background(),
+
+            //Background------------------
+            BackgroundgeneralInstru(
+            colorfondo: Color(0xFFF12EA7), 
+            imagen1: 'assets/Instrucciones_Nunca3.png', 
+            imagen2: 'assets/Instrucciones_Nunca1.png',),
+
             Cuerpo(),
 
             ],),
@@ -59,18 +69,9 @@ class Cuerpo extends StatelessWidget {
     
     return Column(
       children: [
-        SizedBox(height: size.height*0.05,),
+        SizedBox(height: size.height*0.02,),
 
-        Container(
-          child: 
-            Text("YO NUNCA NUNCA ",
-               textAlign: TextAlign.center,
-               style: TextStyle(fontSize: 40,
-               fontWeight: FontWeight.bold,
 
-               ),
-          ),
-        ),
         Card_swiperNunca(),
         
 
@@ -107,17 +108,18 @@ class Card_swiperNunca  extends StatelessWidget {
       children: 
         [
         Container(
+          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20)),
 
           
           
           //width: double.infinity,
           width: double.infinity,
-          height: size.height*0.7,
+          height: size.height*0.8,
           child: Swiper(
             itemCount: juegosYoNunca.length,
             layout: SwiperLayout.TINDER,
-            itemWidth: size.width*0.7,
-            itemHeight: size.height*0.8,
+            itemWidth: size.width*0.8,
+            itemHeight: size.height*1,
             itemBuilder: (BuildContext context, int index){
               return Stack(
               
@@ -131,22 +133,39 @@ class Card_swiperNunca  extends StatelessWidget {
 //randomHappylist.descripcion
                     Column(
                       children: [
-                        SizedBox(height: size.height*0.03,),
+                        SizedBox(height: size.height*0.02,),
+
+                        Text("YO NUNCA NUNCA ",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black
+              
+
+               ),
+          ),
+                        SizedBox(height: size.height*0.02,),
                         Container(
                           height:  size.height*0.2,
                           width:  size.height*0.4,
-                          child: Text(newlista[index].descripcion,)),
-                        SizedBox(height: size.height*0.03,),
+                          child: Text(newlista[index].descripcion,
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize:18,
+                              fontWeight: FontWeight.w600,
+          ), 
+                          )),
+                        SizedBox(height: size.height*0.02,),
                         Center(
                           child: GestureDetector(
                             
-                            onTap: ()=> Navigator.pushNamed(context, juegos[index].ruta),
+                            onTap: (){},
                             child: ClipRRect(
 
                               borderRadius: BorderRadius.circular(20),
                               child: FadeInImage(
                                 height: size.height*0.4,
-                                width:size.width*0.5,
+                                width:size.width*0.6,
                                 placeholder: AssetImage("assets/loading.gif"),
                                 image: AssetImage(newlista[index].imaganes),
                                 fit:BoxFit.cover,
@@ -157,6 +176,17 @@ class Card_swiperNunca  extends StatelessWidget {
                             ),
                           ),
                         ),
+                        SizedBox(height: size.height*0.02,),
+
+                        Text("Desplazar a la derecha ",
+                          textAlign: TextAlign.center,
+                          style: TextStyle(fontSize: 15,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black
+              
+
+               ),
+          ),
                       ],
                     ),
 
@@ -198,11 +228,13 @@ class BackgroundCafe extends StatelessWidget {
     return Container(
       
       decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(20),
+
         gradient: LinearGradient(
         begin: Alignment.bottomLeft,
           end: Alignment.topRight,
           stops: [0.01,0.9],
-          colors: [Color(0xff6f3200),Color(0xff804000)]
+          colors: [Color.fromARGB(255, 255, 255, 255),Color.fromARGB(255, 255, 255, 255)]
       ),
     ),
     );

@@ -1,0 +1,1 @@
+ final size= MediaQuery.of(context).size;
