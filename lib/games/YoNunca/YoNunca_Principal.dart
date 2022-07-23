@@ -1,9 +1,7 @@
-import 'dart:html';
 
 import 'package:bebemos/games/kingV3.dart';
 import 'package:bebemos/widgets/Datos.dart';
-import 'package:bebemos/widgets/background.dart';
-import 'package:bebemos/widgets/card_swiper.dart';
+
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
 

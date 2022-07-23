@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 
 import '../games/Botella/intrucciones_Botella.dart';
-import '../games/QueMemeSoy/QueMeme_Juego.dart';
+
 import '../games/QueMemeSoy/intrucciones_Meme.dart';
 import '../games/YoNunca/intrucciones_Nunca.dart';
 import '../games/intrucciones_Kings.dart';
