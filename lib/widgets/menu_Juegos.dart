@@ -484,8 +484,7 @@ class _SplashScreen extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: SafeArea(
-        child: Scaffold(
+      home: Scaffold(
           body: Stack(
             children: <Widget>[
               LiquidSwipe(
@@ -542,7 +541,6 @@ class _SplashScreen extends State<SplashScreen> {
               )
             ],
           ),
-        ),
       ),
     );
   }

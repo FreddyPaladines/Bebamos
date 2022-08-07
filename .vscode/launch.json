@@ -8,7 +8,7 @@
             "name": "bebemos",
             "request": "launch",
             "type": "dart",
-            "program": "lib/widgets/main.dart"
+            "program": "lib/main.dart"
             
         },
         {

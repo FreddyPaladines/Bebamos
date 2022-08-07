@@ -51,7 +51,7 @@ class CuerpoNunca extends StatelessWidget {
         Center(
           child: Container(
               height:size.height*0.7,
-              width: size.width*0.7,
+              width: size.width*0.85,
               decoration: BoxDecoration(
                         color: Colors.white, 
                         borderRadius: BorderRadius.circular(16),

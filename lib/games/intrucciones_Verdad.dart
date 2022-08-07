@@ -54,7 +54,7 @@ class _CuerpoVerdad extends StatelessWidget {
         Center(
           child: Container(
               height:size.height*0.7,
-              width: size.width*0.7,
+              width: size.width*0.85,
               decoration: BoxDecoration(
                         color: Color.fromARGB(255, 255, 255, 255), 
                         borderRadius: BorderRadius.circular(16),

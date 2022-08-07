@@ -128,62 +128,69 @@ class CuerpoInstruccionesGeneral extends StatelessWidget {
 
         SizedBox(height:size.height*0.05),
 
-            Row(
-            children: [
-              SizedBox(width:size.width*0.06),
-              ElevatedButton(
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: size.width*0.1),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceAround,
+
+              children: [
                 
-                
-                
-                child: Text("Volver",style: TextStyle(
-                      color: Colors.black,
-                      fontSize:20,
-                      fontWeight: FontWeight.w600,)),
-                onPressed: (){
-                  Navigator.pushNamed(context,"MenuJuegos" );
-                }, 
-                 style: ElevatedButton.styleFrom(
+
+                ElevatedButton(
                   
-                 primary: colorBotones,
-                 padding: EdgeInsets.symmetric(horizontal: 35, vertical: 15),
-                 textStyle: TextStyle(
-                 fontSize: 30,
-                 fontWeight: FontWeight.bold),
-                 shadowColor: Colors.black ),
-                 ),
-              SizedBox(width:size.width*0.02),
+                  
+                  
+                  
+                  child: Text("Volver",style: TextStyle(
+                        color: Colors.black,
+                        fontSize:20,
+                        fontWeight: FontWeight.w600,)),
+                  onPressed: (){
+                    Navigator.pushNamed(context,"MenuJuegos" );
+                  }, 
+                   style: ElevatedButton.styleFrom(
+                    
+                   primary: colorBotones,
+                   padding: EdgeInsets.symmetric(horizontal: 35, vertical: 15),
+                   textStyle: TextStyle(
+                   fontSize: 30,
+                   fontWeight: FontWeight.bold),
+                   shadowColor: Colors.black ),
+                   ),
 
-                 
-              
 
-
-
-
-
-              ElevatedButton(
+                   
                 
-                
-                child: Text("Comenzar",style: TextStyle(
-                      color: Colors.black,
-                      fontSize:20,
-                      fontWeight: FontWeight.w600,)),
-                onPressed: (){
-                  Navigator.pushNamed(context, rutapagina);
-                }, 
-                 style: ElevatedButton.styleFrom(
-                 primary: colorBotones,
-                 padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-                 textStyle: TextStyle(
-                 fontSize: 30,
-                 fontWeight: FontWeight.bold),
-                 shadowColor: Colors.black ),
-                 ),
 
 
 
 
-            ],
+
+                ElevatedButton(
+                  
+                  
+                  child: Text("Comenzar",style: TextStyle(
+                        color: Colors.black,
+                        fontSize:20,
+                        fontWeight: FontWeight.w600,)),
+                  onPressed: (){
+                    Navigator.pushNamed(context, rutapagina);
+                  }, 
+                   style: ElevatedButton.styleFrom(
+                   primary: colorBotones,
+                   padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                   textStyle: TextStyle(
+                   fontSize: 30,
+                   fontWeight: FontWeight.bold),
+                   shadowColor: Colors.black ),
+                   ),
+
+
+
+
+              ],
           ),
+            ),
 
 
 

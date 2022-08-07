@@ -49,7 +49,7 @@ class CuerpoKings extends StatelessWidget {
         Center(
           child: Container(
               height:size.height*0.7,
-              width: size.width*0.7,
+              width: size.width*0.85,
               decoration: BoxDecoration(
                         color: Colors.white, 
                         borderRadius: BorderRadius.circular(16),
@@ -86,7 +86,7 @@ class CuerpoKings extends StatelessWidget {
                     
                     ),
                   Padding(
-                  padding: EdgeInsets.all(10),
+                  padding: EdgeInsets.all(15),
                   child: Text ("Todos se sientan alrededor de la mesa. En el centro, pon un vaso grande, Por turnos todos los jugadores toman una carta y siguen las reglas de cada carta. ", 
                     style: TextStyle(
                           color: Colors.black,
@@ -108,62 +108,59 @@ class CuerpoKings extends StatelessWidget {
 
                   SizedBox(height:size.height*0.05),
 
-                      Row(
-                      children: [
-                        SizedBox(width:size.width*0.06),
-                        ElevatedButton(
-                          
-                          
-                          
-                          child: Text("Volver",style: TextStyle(
-                                color: Colors.black,
-                                fontSize:20,
-                                fontWeight: FontWeight.w600,)),
-                          onPressed: (){
-                            Navigator.pushNamed(context,"MenuJuegos" );
-                          }, 
-                           style: ElevatedButton.styleFrom(
-                            
-                           primary: Color(0xFFE928A0),
-                           padding: EdgeInsets.symmetric(horizontal: 35, vertical: 15),
-                           textStyle: TextStyle(
-                           fontSize: 30,
-                           fontWeight: FontWeight.bold),
-                           shadowColor: Colors.black ),
-                           ),
-                        SizedBox(width:size.width*0.02),
-
-                           
+                      Container(
+                        margin: EdgeInsets.symmetric(horizontal: size.width*0.1),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
                         
+                        children: [
+                          ElevatedButton(
+                            
+                            
+                            
+                            child: Text("Volver",style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize:20,
+                                  fontWeight: FontWeight.w600,)),
+                            onPressed: (){
+                              Navigator.pushNamed(context,"MenuJuegos" );
+                            }, 
+                             style: ElevatedButton.styleFrom(
+                              
+                             primary: Color(0xFFE928A0),
+                             padding: EdgeInsets.symmetric(horizontal: 35, vertical: 15),
+                             textStyle: TextStyle(
+                             fontSize: 30,
+                             fontWeight: FontWeight.bold),
+                             shadowColor: Colors.black ),
+                             ),
+
+
+                          ElevatedButton(
+                            
+                            
+                            child: Text("Comenzar",style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize:20,
+                                  fontWeight: FontWeight.w600,)),
+                            onPressed: (){
+                              Navigator.pushNamed(context,"kingv3" );
+                            }, 
+                             style: ElevatedButton.styleFrom(
+                             primary: Color(0xFFE928A0),
+                             padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+                             textStyle: TextStyle(
+                             fontSize: 30,
+                             fontWeight: FontWeight.bold),
+                             shadowColor: Colors.black ),
+                             ),
 
 
 
 
-
-                        ElevatedButton(
-                          
-                          
-                          child: Text("Comenzar",style: TextStyle(
-                                color: Colors.black,
-                                fontSize:20,
-                                fontWeight: FontWeight.w600,)),
-                          onPressed: (){
-                            Navigator.pushNamed(context,"kingv3" );
-                          }, 
-                           style: ElevatedButton.styleFrom(
-                           primary: Color(0xFFE928A0),
-                           padding: EdgeInsets.symmetric(horizontal: 25, vertical: 15),
-                           textStyle: TextStyle(
-                           fontSize: 30,
-                           fontWeight: FontWeight.bold),
-                           shadowColor: Colors.black ),
-                           ),
-
-
-
-
-                      ],
+                        ],
                     ),
+                      ),
 
 
 

@@ -144,6 +144,7 @@ class Card_swiperNunca  extends StatelessWidget {
           ),
                         SizedBox(height: size.height*0.02,),
                         Container(
+                          margin: EdgeInsets.symmetric(horizontal: size.width*0.05,),
                           height:  size.height*0.2,
                           width:  size.height*0.4,
                           child: Text(newlista[index].descripcion,
@@ -163,7 +164,6 @@ class Card_swiperNunca  extends StatelessWidget {
                               borderRadius: BorderRadius.circular(20),
                               child: FadeInImage(
                                 height: size.height*0.4,
-                                width:size.width*0.6,
                                 placeholder: AssetImage("assets/loading.gif"),
                                 image: AssetImage(newlista[index].imaganes),
                                 fit:BoxFit.cover,
