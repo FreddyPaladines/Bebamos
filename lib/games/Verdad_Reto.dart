@@ -9,7 +9,7 @@ class VerdadoReto extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color(0xff34006d),
-        title: Text('Bebamos: Juego para beber con amigos'),
+        title: Text('Bebamos'),
         elevation: 0,
         actions: [
           IconButton(onPressed: (){

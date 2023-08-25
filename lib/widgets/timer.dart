@@ -1,4 +1,4 @@
-import 'dart:async';
+/* import 'dart:async';
 
 import 'package:bebemos/widgets/background.dart';
 import 'package:flutter/material.dart';
@@ -85,7 +85,7 @@ class _QueMemejuegoState extends State<QueMemejuego> {
       
       appBar: AppBar(
         backgroundColor: Color(0xff34006d),
-        title: Text('Bebamos: Juego para beber con amigos'),
+        title: Text('Bebamos'),
         elevation: 0,
         actions: [
           IconButton(onPressed: (){
@@ -466,3 +466,4 @@ class ButtonWidget extends StatelessWidget{
 }
 
 
+ */

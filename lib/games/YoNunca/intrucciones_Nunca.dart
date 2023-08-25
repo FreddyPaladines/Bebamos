@@ -11,7 +11,8 @@ class InstruccionesNunca extends StatelessWidget {
     return Scaffold(
       body: Scaffold(
         appBar: AppBar(
-        title: Text('Bebamos: Juego para beber con amigos'),
+          backgroundColor: Color.fromARGB(255, 79, 0, 153),
+        title: Text('Bebamos'),
         elevation: 0,
         actions: [
           IconButton(onPressed: (){
@@ -71,7 +72,7 @@ class CuerpoNunca extends StatelessWidget {
                         
               child: CuerpoInstruccionesGeneral(
                 size: size, 
-                colorBotones: Color(0xFFF12EA7), 
+                colorBotones: Color.fromARGB(255, 153, 153, 153), 
                 cuerpoInstricciones: 'En la pantalla saldrán preguntas al azar, los participantes que han hecho lo mencionado alguna vez deben beber una cantidad fijada por el grupo"', 
                 imagenInstrucciones: 'assets/Instrucciones_Nunca2.png', 
                 rutapagina: 'YoNuncaPrincipal',),

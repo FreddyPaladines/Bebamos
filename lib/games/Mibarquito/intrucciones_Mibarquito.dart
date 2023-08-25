@@ -2,8 +2,9 @@
 import 'package:flutter/material.dart';
 
 import '../BackgroundInstruccionesGeneral.dart';
+import 'MiBarquito_Juego.dart';
 
-class InstruccionesMeme extends StatelessWidget {
+class InstruccionesBarquito extends StatelessWidget {
 
 
   @override
@@ -11,25 +12,20 @@ class InstruccionesMeme extends StatelessWidget {
     return Scaffold(
       body: Scaffold(
         appBar: AppBar(
-        title: Text('Bebamos: Juego para beber con amigos'),
+        backgroundColor: Color.fromARGB(255, 0, 0, 0),
+        title: Text('Bebamos'),
         elevation: 0,
         actions: [
           IconButton(onPressed: (){
             Navigator.pushNamed(context,"MenuJuegos" );
           }, 
-          icon: Icon(Icons.videogame_asset))
-        
+          icon: Icon(Icons.keyboard_return))
         ],
         )
       ,
         body: Stack(
           children: [
-            BackgroundgeneralInstru(
-              colorfondo: Color(0xffFCD23D), 
-              imagen1: 'assets/Instrucciones_meme1.png', 
-              imagen2: 'assets/Instrucciones_meme2.png',
-              
-            ),
+            FondoInstrucciones(),
             CuerpoMeme(),
 
 
@@ -74,12 +70,15 @@ class CuerpoMeme extends StatelessWidget {
                         
                         ),
                         
-              child: CuerpoInstruccionesGeneral(
-                colorBotones: Color(0xffFCD23D), 
-                cuerpoInstricciones: 'Una persona por turno vera una imagen al azar del meme, y tendra que imitarlo, el publico decide si tomas o no dependiendo de como imitas el meme (ojo es por tiempo):D', 
-                imagenInstrucciones: 'assets/Instrucciones_meme3.png', 
-                rutapagina: 'QueMemejuego', 
-                size: size,)
+              child: GestureDetector(
+                onTap: ()=> Navigator.pushNamed(context,"Barquitojuego" ),
+                child: CuerpoInstruccionesGeneral(
+                  colorBotones: Color(0xffFCD23D), 
+                  cuerpoInstricciones: 'Un participante en voz alta dirá la frase “llegó un barco cargado de…” y agrega el contenido que se muestre, pierde el que repita o no responda a tiempo.', 
+                  imagenInstrucciones: 'assets/Instrucciones_meme3.png', 
+                  rutapagina: 'Barquitojuego', 
+                  size: size,),
+              )
            )
           
           

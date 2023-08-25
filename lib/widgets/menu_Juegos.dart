@@ -4,13 +4,16 @@ import 'package:get/get.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
+import 'package:provider/provider.dart';
 
 import '../games/Botella/intrucciones_Botella.dart';
 
-import '../games/QueMemeSoy/intrucciones_Meme.dart';
+import '../games/Mibarquito/intrucciones_Mibarquito.dart';
+import '../games/ProbabilidadHay/intrucciones_probalidad.dart';
 import '../games/YoNunca/intrucciones_Nunca.dart';
 import '../games/intrucciones_Kings.dart';
 import '../games/intrucciones_Verdad.dart';
+import '../screens/personaProvider/provider.dart';
 //import 'package:concentric_transition/concentric_transition.dart';
 
 class Menujuego extends StatelessWidget {
@@ -18,18 +21,9 @@ class Menujuego extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final listapersonaje = Provider.of<ListProvider>(context);
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Bebamos: Juego para beber con amigos'),
-        elevation: 0,
-        actions: [
-          IconButton(onPressed: (){
-            Navigator.pushNamed(context,"MenuJuegos" );
-          }, 
-          icon: Icon(Icons.videogame_asset))
-        ],
-        )
-      ,
+
       body: Scaffold(
         body: Stack(
           children: [
@@ -80,7 +74,7 @@ class _SplashScreen extends State<SplashScreen> {
     super.initState();
   }
 
-  final pages = [
+  final pagesEsp = [
     
     Container(
       color:  Color(0xFFFDECEF),
@@ -315,7 +309,7 @@ class _SplashScreen extends State<SplashScreen> {
         children: <Widget>[
           GestureDetector(
             onTap: (){
-              Get.to(() => InstruccionesMeme());
+              Get.to(() => InstruccionesBarquito());
 
             }
             ,
@@ -347,15 +341,15 @@ class _SplashScreen extends State<SplashScreen> {
                   child: Column(
               children:  [
                   Text(
-                    "Adivina",
+                    "Mi barquito",
                     style: SplashScreen.style,
                   ),
                   Text(
-                    "el",
+                    "viene",
                     style: SplashScreen.style,
                   ),
                   Text(
-                    "MEME",
+                    "Cargado de",
                     style: SplashScreen.style,
                   ),
               ],
@@ -451,7 +445,535 @@ class _SplashScreen extends State<SplashScreen> {
         ],
       ),
     ),
+
+    Container(
+      color: Color.fromARGB(255, 150, 82, 218),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          GestureDetector(
+            onTap: (){
+              Get.to(() => InstruccionesProbabilidad());
+            },
+            child: Stack(
+              children: [
+                Center(
+                  child: Lottie.asset(
+                    "assets/BackgroundBotella.json",
+                    repeat: true,
+                    height: 300,
+                    width:400
+                    
+                    ),
+                ),
+                Column(
+                  children: [
+                    Center(
+                      child: Image.asset(
+                        'assets/Logo_probabilidad.gif',
+                        fit: BoxFit.cover,
+                        height:300,
+                        width:300,
+                      ),
+                    
+                    ),
+                    SizedBox(height:200),
+                  ],
+                ),
+              Column(
+              children:  [
+          
+                SizedBox(height:330),
+                Center(
+                  child: Column(
+              children:  [
+                  Text(
+                    "Que",
+                    style: SplashScreen.style,
+                  ),
+                  Text(
+                    "Probabilidad",
+                    style: SplashScreen.style,
+                  ),
+                  Text(
+                    "Hay",
+                    style: SplashScreen.style,
+                  ),
+              ],
+                  ),
+                ),
+          
+              ],
+            ),
+          
+              
+              ],
+            ),
+          ),
+
+        ],
+      ),
+    ),
+    
   ];
+
+
+
+  //Lista en ingles
+
+  final pagesingles = [
+    
+    Container(
+      color:  Color(0xFFFDECEF),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          GestureDetector(
+            onTap: (){
+              Get.to(() => InstruccionesKings());
+
+            },
+            child: Stack(
+              children: [
+                Center(
+                  child: Lottie.asset(
+                    "assets/confetti.json",
+                    repeat: false,
+                    height: 500,
+                    width:400
+                    
+                    ),
+                ),
+                Column(
+                  children: [
+                    Center(
+                      child: Image.asset(
+                        'assets/Kings.png',
+                        fit: BoxFit.cover,
+                        height:300,
+                        width:300,
+                      ),
+                    
+                    ),
+                    SizedBox(height:200),
+                  ],
+                ),
+              Column(
+              children: const [
+          
+                SizedBox(height:400),
+          
+                Center(
+                  child: Text(
+                    "Happy Kings ",
+                    style: SplashScreen.style,
+                  ),
+                ),
+          
+              ],
+            ),
+          
+              
+              ],
+            ),
+          ),
+
+        ],
+      ),
+    ),
+
+
+
+
+
+//Navigator.pushNamed(context,"kingv3" );
+
+    Container(
+      color: const Color(0xFFF12EA7),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+        GestureDetector(
+            onTap: (){
+              Get.to(() => InstruccionesNunca());
+
+            },
+            child: Stack(
+              children: [
+                Center(
+                  child: Lottie.asset(
+                    "assets/BackgroundNunca.json",
+                    repeat: true,
+                    height: 300,
+                    width:400
+                    
+                    ),
+                ),
+                Column(
+                  children: [
+                    Center(
+                      child: Image.asset(
+                        'assets/Nunca.png',
+                        fit: BoxFit.cover,
+                        height:300,
+                        width:300,
+                      ),
+                    
+                    ),
+                    SizedBox(height:200),
+                  ],
+                ),
+              Column(
+              children:  [
+          
+                SizedBox(height:330),
+                Center(
+                  child: Column(
+              children:  [
+                  Text(
+                    "Never",
+                    style: SplashScreen.style,
+                  ),
+                  Text(
+                    "Have",
+                    style: SplashScreen.style,
+                  ),
+                  Text(
+                    "I ever",
+                    style: SplashScreen.style,
+                  ),
+              ],
+                  ),
+                ),
+          
+              ],
+            ),
+          
+              
+              ],
+            ),
+          ),
+
+        ],
+      ),
+    ),
+
+
+
+
+
+
+    Container(
+      color: Color(0xff28A5B6),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>
+        [
+          GestureDetector(
+            onTap: (){
+              Get.to(() => InstruccionesVerdad());
+
+            },
+            child: Stack(
+              children: [
+                Center(
+                  child: Lottie.asset(
+                    "assets/BackgroundVerdad.json",
+                    repeat: true,
+                    height: 300,
+                    width:300
+                    
+                    ),
+                ),
+                Column(
+                  children: [
+                    Center(
+                      child: Image.asset(
+                        'assets/Verdad o reto2.png',
+                        fit: BoxFit.cover,
+                        height:300,
+                        width:300,
+                      ),
+                    
+                    ),
+                    SizedBox(height:200),
+                  ],
+                ),
+              Column(
+              children:  [
+          
+                SizedBox(height:330),
+                Center(
+                  child: Column(
+              children:  [
+                  Text(
+                    "Truth ",
+                    style: SplashScreen.style,
+                  ),
+                  Text(
+                    "oR",
+                    style: SplashScreen.style,
+                  ),
+                  Text(
+                    "Dare!",
+                    style: SplashScreen.style,
+                  ),
+              ],
+                  ),
+                ),
+          
+              ],
+            ),
+          
+              
+              ],
+            ),
+          ),
+
+        ],
+
+
+      ),
+    ),
+
+
+
+
+
+
+    Container(
+      color: Color(0xffffffff),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          GestureDetector(
+            onTap: (){
+              Get.to(() => InstruccionesBarquito());
+
+            }
+            ,
+                
+
+            child: Stack(
+              
+              children: [
+
+                Column(
+                  children: [
+                    Center(
+                      child: Image.asset(
+                        'assets/Meme.png',
+                        fit: BoxFit.cover,
+                        height:300,
+                        width:300,
+                      ),
+                    
+                    ),
+                    SizedBox(height:200),
+                  ],
+                ),
+              Column(
+              children:  [
+
+                SizedBox(height:330),
+                Center(
+                  child: Column(
+              children:  [
+                  Text(
+                    "The",
+                    style: SplashScreen.style,
+                  ),
+                  Text(
+                    "Boat",
+                    style: SplashScreen.style,
+                  ),
+                  Text(
+                    "Game",
+                    style: SplashScreen.style,
+                  ),
+              ],
+                  ),
+                ),
+
+              ],
+            ),
+
+              
+              ],
+            ),
+          ),
+
+        ],
+      ),
+    ),
+
+
+
+
+
+
+
+
+    Container(
+      color: Color(0xff8C755E),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          GestureDetector(
+            onTap: (){
+              Get.to(() => InstruccionesBotella());
+            },
+            child: Stack(
+              children: [
+                Center(
+                  child: Lottie.asset(
+                    "assets/BackgroundBotella.json",
+                    repeat: true,
+                    height: 300,
+                    width:400
+                    
+                    ),
+                ),
+                Column(
+                  children: [
+                    Center(
+                      child: Image.asset(
+                        'assets/Botella.png',
+                        fit: BoxFit.cover,
+                        height:300,
+                        width:300,
+                      ),
+                    
+                    ),
+                    SizedBox(height:200),
+                  ],
+                ),
+              Column(
+              children:  [
+          
+                SizedBox(height:330),
+                Center(
+                  child: Column(
+              children:  [
+                  Text(
+                    "Spin",
+                    style: SplashScreen.style,
+                  ),
+                  Text(
+                    "the",
+                    style: SplashScreen.style,
+                  ),
+                  Text(
+                    "bottle",
+                    style: SplashScreen.style,
+                  ),
+              ],
+                  ),
+                ),
+          
+              ],
+            ),
+          
+              
+              ],
+            ),
+          ),
+
+        ],
+      ),
+    ),
+
+    Container(
+      color: Color.fromARGB(255, 150, 82, 218),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: <Widget>[
+          GestureDetector(
+            onTap: (){
+              Get.to(() => InstruccionesProbabilidad());
+            },
+            child: Stack(
+              children: [
+                Center(
+                  child: Lottie.asset(
+                    "assets/BackgroundBotella.json",
+                    repeat: true,
+                    height: 300,
+                    width:400
+                    
+                    ),
+                ),
+                Column(
+                  children: [
+                    Center(
+                      child: Image.asset(
+                        'assets/Logo_probabilidad.gif',
+                        fit: BoxFit.cover,
+                        height:300,
+                        width:300,
+                      ),
+                    
+                    ),
+                    SizedBox(height:200),
+                  ],
+                ),
+              Column(
+              children:  [
+          
+                SizedBox(height:330),
+                Center(
+                  child: Column(
+              children:  [
+                  Text(
+                    "How",
+                    style: SplashScreen.style,
+                  ),
+                  Text(
+                    "Likely",
+                    style: SplashScreen.style,
+                  ),
+                  Text(
+                    "is it",
+                    style: SplashScreen.style,
+                  ),
+              ],
+                  ),
+                ),
+          
+              ],
+            ),
+          
+              
+              ],
+            ),
+          ),
+
+        ],
+      ),
+    ),
+    
+  ];
+
+
+
+
+
+
+
 
 
 
@@ -482,6 +1004,10 @@ class _SplashScreen extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final listapersonaje = Provider.of<ListProvider>(context);
+    final pages= listapersonaje.idioma==0? pagesEsp:pagesingles;
+
+                          
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(

@@ -21,7 +21,8 @@ class YoNuncaPrincipal extends StatelessWidget {
     return Scaffold(
       
       appBar: AppBar(
-        title: Text('Bebamos: Juego para beber con amigos'),
+        backgroundColor: Color.fromARGB(255, 79, 0, 153),
+        title: Text('Bebamos'),
         elevation: 0,
         actions: [
           IconButton(onPressed: (){

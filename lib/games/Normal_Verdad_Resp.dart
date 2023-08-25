@@ -97,8 +97,8 @@ class NormalVerdadoResp extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff34006d),
-        title: Text('Bebamos: Juego para beber con amigos'),
+        backgroundColor: Colors.black87,
+        title: Text('¿Verdad o reto?'),
         elevation: 0,
         actions: [
           IconButton(onPressed: (){
@@ -168,7 +168,21 @@ const _TextoEnPantalla({
                   ),
                   GestureDetector(
                   onTap: () {Navigator.pushNamed(context, "NoemalVerdadoReto");},
-                  )
+                  ),
+                  Column( children: [
+
+                  Container(height: 250,),
+                  Text("Siguiente",
+                style: TextStyle(
+                    fontFamily: 'Arial',
+                    fontSize: 15,
+                    color: Colors.white,
+                    height: 1,
+                  ),
+                  ),
+                ],
+
+                )
               
               
               ],
@@ -211,7 +225,7 @@ class CuadroTexto extends StatelessWidget{
             height:400,
             
                 decoration: BoxDecoration(
-                  color: Color(0xff34006d),
+                  color: Colors.black87,
                   borderRadius: BorderRadius.all(Radius.circular(20)),
                   boxShadow: [
                           BoxShadow(

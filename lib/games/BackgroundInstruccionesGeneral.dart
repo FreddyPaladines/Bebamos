@@ -1,6 +1,7 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 
 class BackgroundgeneralInstru extends StatelessWidget {
@@ -31,7 +32,7 @@ class BackgroundgeneralInstru extends StatelessWidget {
           SizedBox(height:size.height*0.05),
           Row(
             children: [
-              SizedBox(width:size.width*0.6),
+              SizedBox(width:size.width*0.7),
 
 
               Image.asset(
@@ -42,7 +43,7 @@ class BackgroundgeneralInstru extends StatelessWidget {
                           ),
             ],
           ),
-          SizedBox(height:size.height*0.35),
+          SizedBox(height:size.height*0.45),
 
           Row(
             children: [
@@ -95,7 +96,7 @@ class CuerpoInstruccionesGeneral extends StatelessWidget {
           child: Text ("INSTRUCCIONES", 
           style: TextStyle(
                 color: Colors.black,
-                fontSize: 30,
+                fontSize: 25,
                 fontWeight: FontWeight.w600,
           ),
 
@@ -110,23 +111,25 @@ class CuerpoInstruccionesGeneral extends StatelessWidget {
         child: Text (cuerpoInstricciones, 
           style: TextStyle(
                 color: Colors.black,
-                fontSize:18,
+                fontSize:20,
                 fontWeight: FontWeight.w600,
           ),             
           )
         ),
         SizedBox(height:size.height*0.05),
 
-        Image.asset(
-              imagenInstrucciones,
-              fit: BoxFit.cover,
-              height:200,
-              width:200,
-            ),
+        Container(
+          child: Image.asset(
+                imagenInstrucciones,
+                fit: BoxFit.cover,
+                height:size.height*0.28,
+                width:size.width*0.55,
+              ),
+        ).animate().shimmer(delay: 400.ms, duration: 1800.ms),
 
 
 
-        SizedBox(height:size.height*0.05),
+        SizedBox(height:size.height*0.03),
 
             Container(
               margin: EdgeInsets.symmetric(horizontal: size.width*0.1),
@@ -136,31 +139,12 @@ class CuerpoInstruccionesGeneral extends StatelessWidget {
               children: [
                 
 
-                ElevatedButton(
-                  
-                  
-                  
-                  
-                  child: Text("Volver",style: TextStyle(
-                        color: Colors.black,
-                        fontSize:20,
-                        fontWeight: FontWeight.w600,)),
-                  onPressed: (){
-                    Navigator.pushNamed(context,"MenuJuegos" );
-                  }, 
-                   style: ElevatedButton.styleFrom(
-                    
-                   primary: colorBotones,
-                   padding: EdgeInsets.symmetric(horizontal: 35, vertical: 15),
-                   textStyle: TextStyle(
-                   fontSize: 30,
-                   fontWeight: FontWeight.bold),
-                   shadowColor: Colors.black ),
-                   ),
 
 
                    
-                
+/*                       onPressed: (){
+                    Navigator.pushNamed(context,"MenuJuegos" );
+                  },              */
 
 
 

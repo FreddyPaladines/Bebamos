@@ -11,7 +11,8 @@ class InstruccionesVerdad extends StatelessWidget {
     return Scaffold(
       body: Scaffold(
         appBar: AppBar(
-        title: Text('Bebamos: Juego para beber con amigos'),
+          backgroundColor: Colors.black87,
+        title: Text('¿Verdad o reto?'),
         elevation: 0,
         actions: [
           IconButton(onPressed: (){

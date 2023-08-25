@@ -9,8 +9,8 @@ class NormalVerdadoReto extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color(0xff34006d),
-        title: Text('Bebamos: Juego para beber con amigos'),
+        backgroundColor: Colors.black87,
+        title: Text('¿Verdad o reto?'),
         elevation: 0,
         actions: [
           IconButton(onPressed: (){
@@ -22,10 +22,11 @@ class NormalVerdadoReto extends StatelessWidget {
       body: Scaffold(
         body: Stack(
           children: [
-            BackgroundgeneralInstru(
-              colorfondo: Color(0xff28A5B6), 
-              imagen1: 'assets/Instrucciones_Verdad2.png', 
-              imagen2: 'assets/Instrucciones_Verdad3.png',),
+            Container(
+        decoration: BoxDecoration(
+          color: Color(0xff28A5B6),
+    
+      ),),
             BotonVerdad(),
             BotonDesafio(),
 

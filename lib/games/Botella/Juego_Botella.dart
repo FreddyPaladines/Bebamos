@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'package:bebemos/widgets/Datos.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
+import 'package:google_fonts/google_fonts.dart';
 import '../BackgroundInstruccionesGeneral.dart';
 import '../kingV3.dart';
 
@@ -12,7 +14,8 @@ class Juego_Botella extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bebamos: Juego para beber con amigos'),
+        backgroundColor: Color.fromARGB(255, 54, 46, 37),
+        title: Text('Bebamos'),
         elevation: 0,
         actions: [
           IconButton(onPressed: (){
@@ -25,12 +28,7 @@ class Juego_Botella extends StatelessWidget {
       body: Scaffold(
         body: Stack(
           children: [
-            BackgroundgeneralInstru(
-              colorfondo: Color(0xFF8C755E), 
-              imagen1: 'assets/Instrucciones_botella2.png', 
-              imagen2: 'assets/Instrucciones_botella3.png',
-
-            ),
+            FondoInstrucciones(),
             CuerpoBotella(),
            
 
@@ -76,6 +74,7 @@ class _CuerpoBotellaState extends State<CuerpoBotella>
   Random random = Random();
   bool mensajeMostrar = false;
   bool desafioMostrar = false;
+  bool botongirar=true;
   
 
 
@@ -92,7 +91,7 @@ class _CuerpoBotellaState extends State<CuerpoBotella>
     super.initState();
     controller = AnimationController (
       vsync: this,
-      duration: Duration(seconds: 2),
+      duration: Duration(seconds: 3),
 
 
       
@@ -136,7 +135,7 @@ class _CuerpoBotellaState extends State<CuerpoBotella>
         Center(
           child: Column(
             children: [
-              SizedBox(height: 150,),
+              SizedBox(height:  size.height*0.25,),
               AnimatedBuilder(
                 animation: animation, 
                 builder: (context,child)=>     
@@ -155,31 +154,34 @@ class _CuerpoBotellaState extends State<CuerpoBotella>
 
 
               SizedBox(height: size.height*0.2,),
-              ElevatedButton(
-                style: ElevatedButton.styleFrom(
-                  textStyle: TextStyle(
-                    color: Colors.black,
-                    fontSize:20,
-                    fontWeight: FontWeight.w600,),
-                  primary: Color(0xFFD9A238),
-                  onPrimary: Colors.black
-                  
-                ),
-                onPressed: (){
-                  controller.forward(from: 0);
-                  setState(() {
-                  randomNum=random.nextInt(1000)+1000;
-                  final angle = randomNum * pi /180;
-                  animation= Tween<double>(begin: 0, end: angle).animate(controller);
-                  //mensajeMostrar= true;
-
-
-
-
-
-                  });
-                }, 
-                child: Text("Girar")),
+              Visibility(
+                visible: botongirar,
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                    textStyle: TextStyle(
+                      color: Colors.black,
+                      fontSize:20,
+                      fontWeight: FontWeight.w600,),
+                    primary: Color(0xFFD9A238),
+                    onPrimary: Colors.black
+                    
+                  ),
+                  onPressed: (){
+                    controller.forward(from: 0);
+                    setState(() {
+                    randomNum=random.nextInt(44);
+                    final angle = randomNum+31.416;
+                    animation= Tween<double>(begin: 0, end: angle).animate(CurvedAnimation(parent: controller, curve: Curves.decelerate));
+                    //mensajeMostrar= true;
+              
+              
+              
+              
+              
+                    });
+                  }, 
+                  child: Text("Girar")),
+              ),
               SizedBox(height: 32,),
               Visibility(
                 visible: mensajeMostrar,
@@ -196,6 +198,9 @@ class _CuerpoBotellaState extends State<CuerpoBotella>
 
                   onPressed: (){
                     setState(() {
+                      botongirar=false;
+                      mensajeMostrar=false;
+                    
 
                     desafioMostrar = true;});
 
@@ -223,9 +228,11 @@ class _CuerpoBotellaState extends State<CuerpoBotella>
             child: Container(
 
               height:size.height*0.6 ,
-              width: size.width*0.7,
+              width: size.width*0.8,
               decoration: BoxDecoration(
-                        color: Color(0xFFD9A238),
+                        image: DecorationImage(image: AssetImage("assets/FondoPapel.png",),
+        fit: BoxFit.fill,
+        ),
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
@@ -241,12 +248,14 @@ class _CuerpoBotellaState extends State<CuerpoBotella>
               child: Column(
                 children: [
                   Row(children: [
-                    SizedBox(width: size.width*0.55,),
+                    SizedBox(width: size.width*0.65,),
                     IconButton(
                       onPressed: (){
                         setState(() {
                           desafioMostrar=false;
                           mensajeMostrar = false;
+                          botongirar=true;
+                          
                           
                         });
                         
@@ -262,18 +271,21 @@ class _CuerpoBotellaState extends State<CuerpoBotella>
                    ],),
                   Container(
                     height: size.height*0.28 ,
-                    width: size.width*0.6,
+                    width: size.width*0.7,
 
-                       child: Text(newjuegosBotella.first.descripcion
-                        ,style: TextStyle(
-                      color: Colors.black,
-                      fontSize:24,
-                      fontWeight: FontWeight.w600,)
+                       child: Text(newjuegosBotella.first.descripcion,textAlign: TextAlign.center
+
+                       //----------------
+                        ,style:GoogleFonts.syneMono(
+                        fontWeight: FontWeight.bold,
+                          fontSize:23,
+                          color: Colors.black,
+                          ),
                        ),
                   ),
                   SizedBox(height: size.height*0.05,),
                   Container(      
-                      height: size.height*0.15,
+                      height: size.height*0.10,
                       width: size.width*0.6,
                       decoration: BoxDecoration(
                       image: DecorationImage(
@@ -290,30 +302,32 @@ class _CuerpoBotellaState extends State<CuerpoBotella>
 
                 ],),
 
-            ),
+            ).animate().fadeIn(),
           ),
         ),
       ],
     )
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       ],
     );
 
+  }
+}
+
+
+class FondoInstrucciones extends StatelessWidget {
+  const FondoInstrucciones({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return  Container(
+      decoration: BoxDecoration(
+        image: DecorationImage(image: AssetImage("assets/FondoMadera.png",),
+        fit: BoxFit.fill,
+        )
+      ),
+
+
+    );
   }
 }

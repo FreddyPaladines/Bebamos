@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 List<int> newList = [0,1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51];
 List listaId = shuffle(newList);
@@ -7,23 +8,20 @@ List listaId = shuffle(newList);
 class KingjuegoV3 extends StatefulWidget {
   
   const KingjuegoV3({ Key? key }) : super(key: key);
-  
-
   @override
   State<KingjuegoV3> createState() => _CounterScreenState();
-  
-
-
 }
 
 class _CounterScreenState extends State<KingjuegoV3> {
   
 
-  Object? imagenValor = 'Trasera_roja.jpg';
+  Object? imagenValor = 'Carta_Atras.png';
   Object? nombreValor = 'Comienza';
   Object? descripcionValor = '';
   Object? idactual;
   List kings=[];
+  late AnimationController _controller;
+  
   final data = [
      {"id" : 1, "Imagen" : "2_Brillo.JPG", "Nombre" : "PARA TI", "Descripcion" : "La persona podrá escoger a un jugador para que beba. La persona elegida deberá beber durante el tiempo establecido al principio del juego."},
      {"id" : 2, "Imagen" : "2_Corazon.JPG", "Nombre" : "PARA TI","Descripcion" : "La persona podrá escoger a un jugador para que beba. La persona elegida deberá beber durante el tiempo establecido al principio del juego."},
@@ -97,6 +95,25 @@ class _CounterScreenState extends State<KingjuegoV3> {
     setState(() {
       if (counter<51 )
       counter++;
+      if (idactual ==45 ){
+        kings.add(1);
+        kingcounter++;        
+        }
+      if (idactual ==46 ){
+        kings.add(2);
+        kingcounter++;
+}
+      if (idactual ==47 ){
+        kings.add(3);
+        kingcounter++;
+}
+      if (idactual ==48 ){
+        kings.add(4);
+        kingcounter++;
+}
+
+
+
       
     });
     OnClicked();
@@ -105,7 +122,11 @@ class _CounterScreenState extends State<KingjuegoV3> {
 
   void decrease() {
     if (counter> 0 )
-      counter--;
+    counter--;
+      
+      if (idactual ==45 || idactual ==46 ||idactual ==47 || idactual ==48){
+      kingcounter--;
+      kings.length=kings.length-1;}
        setState(() {});
     OnClicked();
   }
@@ -136,27 +157,12 @@ class _CounterScreenState extends State<KingjuegoV3> {
             descripcionValor=data[listaId[counter]]["Descripcion"];
 }
       if (counter ==-1 ){
-        imagenValor="Trasera_roja.jpg";
+        imagenValor="Carta_Atras.png";
         nombreValor= "Comienza";
         descripcionValor=""; 
 }
       //Se establece contadores en caso de que saquen Reyes
-      if (idactual ==45 ){
-        kings.add(1);
-        kingcounter++;        
-        }
-      if (idactual ==46 ){
-        kings.add(2);
-        kingcounter++;
-}
-      if (idactual ==47 ){
-        kings.add(3);
-        kingcounter++;
-}
-      if (idactual ==48 ){
-        kings.add(4);
-        kingcounter++;
-}
+      
 
 
 
@@ -172,7 +178,7 @@ class _CounterScreenState extends State<KingjuegoV3> {
   void OnClicked2(){
 
     setState(() {
-      imagenValor="Trasera_roja.jpg";
+      imagenValor="Carta_Atras.png";
       nombreValor= "Comienza";
       descripcionValor=""; 
       //------------------------------data--------------
@@ -200,7 +206,8 @@ class _CounterScreenState extends State<KingjuegoV3> {
     
     return Scaffold(
       appBar: AppBar(
-        title: Text('Bebamos: Juego para beber con amigos'),
+        backgroundColor: Color(0xFFE928A0),
+        title: Text('Bebamos'),
         elevation: 0,
         actions: [
           IconButton(onPressed: (){
@@ -239,6 +246,8 @@ class _CounterScreenState extends State<KingjuegoV3> {
 
     );
   }
+  late FocusNode myFocusNode;
+  
 
   Stack cuerpoKings(int counterMas, TextStyle fontSize30) {
     final size= MediaQuery.of(context).size;
@@ -260,7 +269,7 @@ class _CounterScreenState extends State<KingjuegoV3> {
 
 
             children: [
-              SizedBox(height: size.height*0.05,),
+              SizedBox(height: size.height*0.03,),
 
               
 
@@ -295,35 +304,43 @@ class _CounterScreenState extends State<KingjuegoV3> {
 
               SizedBox(height: size.height*0.05,),
 
-
-
-
-              Text("$nombreValor", style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color:Colors.black),),
-          
-              SizedBox(height: size.height*0.05,),
               Row(
               children: [
                 
 
             //Al crear el expanded le dices con el flatbutton que pertenece al objeto en cuestion 
                 Expanded(
-            
-                child:  FlatButton(
-                onPressed: (){
-                  increase();
-
-                }, 
+                  child: Container(
+                    alignment: Alignment.center,
+                  child:  GestureDetector(
+                    
+                  
+                  onTap: (){
+                    increase();
+                  }, 
+                              
                 
-
-                child: 
-                ClipRRect(
-                 borderRadius: BorderRadius.circular(8.0),
-                     child:
+                  child: 
+                  Animate(
+                    key: ValueKey("$counterMas"),
+                    effects: [FadeEffect(),SlideEffect()],
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20.0),
+                      child: SizedBox.fromSize(
+                        child:
+                    Image.asset("assets/$imagenValor",height: size.height*0.4,fit: BoxFit.cover)
                 
-                Image.asset("assets/$imagenValor",height: size.height*0.3,))
-                ))
+                      )
+                    
+                     
+                         ),
+                  )
+                  )),
+                )
 
           ],),
+          Text( 'Cartas $counterMas/52', style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold, color:Colors.black54) ),
+
 
 
 
@@ -332,20 +349,23 @@ class _CounterScreenState extends State<KingjuegoV3> {
 
 
               //----------------------------------------------------------------------------------------
-          SizedBox(height: size.height*0.05,),
+          SizedBox(height: size.height*0.03,),
 
+          Text("$nombreValor", style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold, color:Colors.black),),
 
 //-------------------------Descripcion-----------------------------------
           
-          Container(
-            height: size.height*0.1,
-            margin: EdgeInsets.symmetric(horizontal: size.width*0.05,),
-            
-            child: Text("$descripcionValor",style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold, color:Colors.black),)),
+          Padding(
+            padding: const EdgeInsets.all(1.0),
+            child: Container(
+              height: size.height*0.2,
+              margin: EdgeInsets.symmetric(horizontal: size.width*0.05,),
+              
+              child: Text("$descripcionValor",style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color:Colors.black),)),
+          ),
           SizedBox(height: size.height*0.05,),
 
 //-------------------------Cartas-----------------------------------
-              Text( 'Cartas $counterMas/52', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color:Colors.black) ),
             ],
           ),
         ),
@@ -441,3 +461,7 @@ List shuffle(List array) {
 } 
 
 
+class AlwaysDisabledFocusNode extends FocusNode {
+  @override
+  bool get hasFocus => false;
+}

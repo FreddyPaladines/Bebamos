@@ -1,4 +1,5 @@
 
+import 'package:bebemos/games/Botella/Juego_Botella.dart';
 import 'package:flutter/material.dart';
 
 import '../BackgroundInstruccionesGeneral.dart';
@@ -10,8 +11,10 @@ class InstruccionesBotella extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Scaffold(
+        
         appBar: AppBar(
-        title: Text('Bebamos: Juego para beber con amigos'),
+        backgroundColor: Color.fromARGB(255, 54, 46, 37),
+        title: Text('La Botella'),
         elevation: 0,
         actions: [
           IconButton(onPressed: (){
@@ -23,12 +26,7 @@ class InstruccionesBotella extends StatelessWidget {
       ,
         body: Stack(
           children: [
-            BackgroundgeneralInstru(
-              colorfondo: Color(0xFF8C755E), 
-              imagen1: 'assets/Instrucciones_botella2.png', 
-              imagen2: 'assets/Instrucciones_botella3.png',
-
-            ),
+            FondoInstrucciones(),
             CuerpoBotella(
             ),
 
@@ -76,7 +74,7 @@ class CuerpoBotella extends StatelessWidget {
                         
               child: CuerpoInstruccionesGeneral(
                 colorBotones: Color(0xFFD9A238), 
-                cuerpoInstricciones: 'Todos se sientan alrededor de la mesa. En el centro pongan en el celuar, la persona que salga en direccion a la botella tendra que hacer el reto que salga en pantalla :o', 
+                cuerpoInstricciones: 'Todos se sientan alrededor de la mesa. En el centro pongan en el celuar, la persona que salga en direccion a la botella tendra que hacer el reto que salga en pantalla', 
                 imagenInstrucciones: 'assets/Instrucciones_botella1.png', 
                 rutapagina: 'JuegoBotella', 
                 size: size,
