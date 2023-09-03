@@ -2,7 +2,8 @@
 import 'package:bebemos/games/ProbabilidadHay/probabilidad_juego.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
+import 'package:provider/provider.dart';
+import '../../screens/personaProvider/provider.dart';
 import '../../screens/personaProvider/provider.dart';
 import '../BackgroundInstruccionesGeneral.dart';
 
@@ -11,11 +12,12 @@ class InstruccionesProbabilidad extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final listapersonaje=Provider.of<ListProvider>(context);
     return Scaffold(
       body: Scaffold(
         appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 0, 0, 0),
-        title: Text('Bebamos'),
+        title: Text(listapersonaje.idioma==0?'Probabilidad':"How likely"),
         elevation: 0,
         actions: [
           IconButton(onPressed: (){
@@ -58,7 +60,7 @@ class CuerpoMeme extends StatelessWidget {
               height:size.height*0.7,
               width: size.width*0.85,
               decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: const Color.fromARGB(255, 255, 255, 255),
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
@@ -81,10 +83,10 @@ class CuerpoMeme extends StatelessWidget {
                   } else{
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             backgroundColor: Colors.white,
-                            content: const Text('Para jugar necesitas agregar al menos dos jugador',style: TextStyle(color: Colors.black87),),
+                            content: Text(listapersonaje.idioma==0?'Para jugar necesitas agregar al menos dos jugador':"To play you need to add at least two players",style: TextStyle(color: Colors.black87),),
                             duration: const Duration(seconds: 10),
                             action: SnackBarAction(
-                              label: "Volver a seleccionar", 
+                              label: listapersonaje.idioma==0?"Volver a seleccionar":"Reselect", 
                               onPressed: (){
                               Navigator.pushNamed(context,"Persona");
                               }),
@@ -98,7 +100,7 @@ class CuerpoMeme extends StatelessWidget {
         SizedBox(height:size.height*0.009),
         Padding(
           padding: EdgeInsets.all(12),
-          child: Text ("INSTRUCCIONES", 
+          child: Text (listapersonaje.idioma==0?"INSTRUCCIONES":"INSTRUCTIONS", 
           style: TextStyle(
                 color: Colors.black,
                 fontSize: 25,
@@ -113,7 +115,7 @@ class CuerpoMeme extends StatelessWidget {
           ),
         Padding(
         padding: EdgeInsets.all(10),
-        child: Text ("Cada jugador es elegido al azar y tendra que hacer un reto con el jugador que salga en el texto", 
+        child: Text (listapersonaje.idioma==0?"Cada jugador es elegido al azar y tendra que hacer un reto con el jugador que salga en el texto":"Each player is chosen randomly and will have to do a challenge with the player that appears in the text", 
           style: TextStyle(
                 color: Colors.black,
                 fontSize:20,
@@ -158,7 +160,7 @@ class CuerpoMeme extends StatelessWidget {
                 ElevatedButton(
                   
                   
-                  child: Text("Comenzar",style: TextStyle(
+                  child: Text(listapersonaje.idioma==0?"Comenzar":"Play",style: TextStyle(
                         color: Colors.black,
                         fontSize:20,
                         fontWeight: FontWeight.w600,)),
@@ -168,10 +170,10 @@ class CuerpoMeme extends StatelessWidget {
                   } else{
                     ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                             backgroundColor: Colors.white,
-                            content: const Text('Para jugar necesitas agregar al menos dos jugador',style: TextStyle(color: Colors.black87),),
+                            content: Text(listapersonaje.idioma==0?'Para jugar necesitas agregar al menos dos jugador':"you need to add at least two players",style: TextStyle(color: Colors.black87),),
                             duration: const Duration(seconds: 10),
                             action: SnackBarAction(
-                              label: "Volver a seleccionar", 
+                              label: listapersonaje.idioma==0?"Volver a seleccionar":"Reselect", 
                               onPressed: (){
                               Navigator.pushNamed(context,"Persona");
                               }),

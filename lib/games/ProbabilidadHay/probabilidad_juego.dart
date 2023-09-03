@@ -18,18 +18,19 @@ class ProbabilidadJuego extends StatefulWidget {
 class _ProbabilidadJuegoState extends State<ProbabilidadJuego> {
   @override
   Widget build(BuildContext context) {
+    final listapersonaje=Provider.of<ListProvider>(context);
     return Scaffold(
       body: Scaffold(
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 0, 0, 0),
-          title: Text('Bebamos'),
+          title: Text(listapersonaje.idioma==0?'Probabilidad':"How likely"),
           elevation: 0,
           actions: [
             IconButton(
                 onPressed: () {
                   Navigator.pushNamed(context, "MenuJuegos");
                 },
-                icon: Icon(Icons.keyboard_return))
+                icon: Icon(Icons.videogame_asset))
           ],
         ),
         body: Stack(
@@ -60,12 +61,7 @@ class _SpinWheelState extends State<SpinWheel> {
   String nombre="Aleatorio";
 
   List<String> items = [
-    "Freddy",
-    "Dayanna",
-    "Jeimy",
-    "Carlos",
-    "Alejandro",
-    "Carla"
+
   ];
 
   List textoDesafio(String nombre, List segNombre){
@@ -127,9 +123,61 @@ class _SpinWheelState extends State<SpinWheel> {
     "${nombre} baila la canción que está sonando, puede acompañarte ${newlist[0]}",
     "${nombre} dale el trago que tiene a ${newlist[0]}",
     "${nombre} no puede hablar durante dos rondas"
-
-
   ];
+  List<String> challenges = [
+     "${nombre} do a sexual position",
+     "${nombre} tells an embarrassing story about someone here",
+     "${nombre} tell us about your first time",
+     "Take everyone who doesn't meet in the same month as ${nombre}",
+     "${nombre} is taken by those of the opposite sex from you",
+     "${newlist[0]} guess ${nombre}'s favorite movie if he doesn't take",
+     "${nombre} plays rock paper scissors with ${newlist[0]} loser takes",
+     "${nombre} I think ${newlist[0]} is thirsty, give it a shot",
+     "${nombre} take your partner or you almost something, if you don't take single",
+     "Glance duel between ${nombre} and ${newlist[0]}, whoever blinks loses",
+     "${nombre} writes in the WhatsApp search engine ${newlist[0]} a word, ${newlist[0]} has to show the results, if it doesn't take",
+     "${nombre} are immune to taking for a round, you choose who takes for you",
+     "${nombre} choose the music now, if they don't let you they all take",
+     "${nombre} take as many as you think were from the other team",
+     "Take everyone who has more followers on Instagram than ${nombre}",
+     "${nombre} Type a word on ${newlist[0]}'s Instagram status, take a shot if it's not allowed",
+     "${nombre} grab ${newlist[0]} hands free",
+     "${nombre} send an emoji to your boss, if he doesn't take",
+     "${nombre} Show off a hidden talent you have.",
+     "Quick ${nombre} you're a cow, moo!",
+     "tell us your opinion ${nombre}, what it means to you, being good in bed.",
+     "${nombre} text your ex, if he doesn't take two shots",
+     "${nombre} share a lie you told that got out of hand.",
+     "${nombre} writes a mime that ${newlist[0]} will do later",
+     "${nombre} tell ${newlist[0]} that she is beautiful",
+     "${nombre} flog ${newlist[0]}, if anyone refuses flog",
+     "${nombre} spin it 5 times ${newlist[0]}",
+     "${nombre} Perrea, ${newlist[0]} put the music with which you will perrearas",
+     "${nombre} plays a whole round holding hands with ${newlist[0]}",
+     "${nombre} plays a whole round holding the bottle",
+     "${nombre} if you have a condom give it to ${newlist[0]} he might get lucky",
+     "${nombre} do you think ${newlist[0]} has the talent to be a porn actor/actress?",
+     "${nombre} guesses the inner break color of ${newlist[0]}",
+     "${nombre} play a song that you and ${newlist[0]} know about, and sing along to the group",
+     "No one can talk to ${nombre} for a round whoever does it takes",
+     "${nombre} oral a bottle, ${newlist[0]} caliph if you did it right",
+     "${nombre} oral a fruit, ${newlist[0]} caliph if you did it right",
+     "${nombre} exchanges a piece of clothing with ${newlist[0]}",
+     "Tell us about your last love breakup ${nombre}, if you don't have two shots",
+     "Everyone at the table has to name ${nombre} as MY LOVE, if they make a mistake take it",
+     "${nombre} name 5 things you would do with a penis",
+     "${nombre} loads ${newlist[0]} if he can't, take. and if that person loads you, take double",
+     "${newlist[0]} has to guess ${nombre}'s superhero, he has three guesses",
+     "${nombre} plays with their eyes closed for a round",
+     "Those of legal age that ${nombre} have to take",
+     "The minors that ${nombre} have to take",
+     "Thumb wrestle between ${nombre} and ${newlist[0]} loser takes",
+     "Everyone at the table has to guess ${nombre}'s favorite video game",
+     "${nombre} dance to the song that is playing, ${newlist[0]} can join you",
+     "${nombre} give the drink he has to ${newlist[0]}",
+     "${nombre} cannot speak for two rounds"
+  ];
+
 
   List<String> titulo=[
     "Kamasutra",
@@ -183,8 +231,64 @@ class _SpinWheelState extends State<SpinWheel> {
 "Sigue",
 "Ayudame",
 "Silencio"
-
   ]; 
+
+ List<String> title=[
+"kamasutra",
+"Confidential",
+"Rich ",
+"Happy Birthday",
+"Equality",
+"Netflix",
+"Deal to death",
+"It's hot",
+"Love",
+"What are you staring at",
+"Nothing fears",
+"Light at the end",
+"DJ",
+"From the closet",
+"Influencers",
+"No gain",
+"Professionals",
+"Increase",
+"A star",
+"The farm",
+"Fire",
+"There are two shots",
+"Pinocchio",
+"Shade",
+"You're beautiful",
+"Bad girl",
+"Twister",
+"Dancer ",
+"Glue",
+"Glue",
+"Protect yourself",
+"Support",
+"breeches",
+"Friends",
+"Outcast",
+"Talent",
+"Talent",
+"Change",
+"Without crying",
+"My love",
+"Synonymous",
+"Force",
+"Super Hero",
+"blind",
+"Older",
+"Minor",
+"little thumb",
+"Videogame",
+"Go on",
+"Help me",
+"Silence"
+  ]; 
+
+
+
 
     List<String> imagen = [
 "Neon4.png",
@@ -243,7 +347,7 @@ class _SpinWheelState extends State<SpinWheel> {
 
 
 
-    return ["${desafios[cant[0]]}","${imagen[cant[0]]}","${titulo[cant[0]]}"];
+    return ["${desafios[cant[0]]}","${imagen[cant[0]]}","${titulo[cant[0]]}","${title[cant[0]]}","${challenges[cant[0]]}"];
    
   }
 
@@ -297,7 +401,7 @@ class _SpinWheelState extends State<SpinWheel> {
                       borderWidth: 2
                       ),
                     onAnimationEnd: () {
-                      Timer(const Duration(seconds: 1), () {
+                      Timer(Duration(seconds: 1), () {
                         setState(() {
                           desafioMostrar = true;
                           nombre = listapersonaje.listapersonaje[selected.value];
@@ -329,7 +433,7 @@ class _SpinWheelState extends State<SpinWheel> {
                             offset: Offset(7, 8))
                       ]),
                     child: Center(
-                      child: Text("Rodar",style: TextStyle(color: Colors.white,),),
+                      child: Text(listapersonaje.idioma==0?"Rodar":"Spin",style: TextStyle(color: Colors.white,),),
                     
 
 
@@ -369,7 +473,7 @@ class _SpinWheelState extends State<SpinWheel> {
                         height: size.height * 0.05,
                         width: size.width * 0.6,
                         //${datos[2]}
-                        child:Text("${datos[2]}",
+                        child:Text(listapersonaje.idioma==0?"${datos[2]}":"${datos[3]}",
                         textAlign: TextAlign.center,
                                 style: TextStyle(
                                   color: Colors.white,
@@ -382,7 +486,7 @@ class _SpinWheelState extends State<SpinWheel> {
                       Container(
                         height: size.height * 0.2,
                         width: size.width * 0.65,
-                        child:Text("${datos[0]}",
+                        child:Text(listapersonaje.idioma==0?"${datos[0]}":"${datos[4]}",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 22,
@@ -424,7 +528,7 @@ class _SpinWheelState extends State<SpinWheel> {
                         height: 40,
                         width: 140,
                         child: Center(
-                          child: Text("HECHO"),
+                          child: Text(listapersonaje.idioma==0?"HECHO":"DONE"),
                         ),
                         decoration: BoxDecoration(
                       color: Color.fromARGB(255, 204, 0, 255),

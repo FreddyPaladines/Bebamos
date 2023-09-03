@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
-import '../../games/kingV3.dart';
+import '../../games/King/kingV3.dart';
 import '../../widgets/Inicio.dart';
 import 'model.dart';
 
@@ -82,12 +82,12 @@ class _PersonaPaginaState extends State<PersonaPagina> {
               child: Column(
                 children: [
                   Container(
-                    height: size.height * 0.03,
+                    height: size.height * 0.05,
                   ),
                   Row(
                     children: [
                       Container(
-                        width: size.width * 0.02,
+                        width: size.width * 0.03,
                       ),
                       Container(
                         child: Text(
@@ -96,7 +96,7 @@ class _PersonaPaginaState extends State<PersonaPagina> {
                           textAlign: TextAlign.left,
                           style: TextStyle(
                             color: Colors.black,
-                            fontSize: 14,
+                            fontSize: 18,
                             fontWeight: FontWeight.w600,
                           ),
                         ),
@@ -108,6 +108,13 @@ class _PersonaPaginaState extends State<PersonaPagina> {
                     child: Form(
                       key: _formKey,
                       child: TextFormField(
+                        onEditingComplete: () {
+                          if (_formKey.currentState!.validate()) {
+                          _formKey.currentState!.save();
+                          _controller.clear();
+                        }
+
+  },
                         style: TextStyle(color: Colors.black),
                         decoration: InputDecoration(
                           filled: true, //<-- SEE
@@ -141,7 +148,7 @@ class _PersonaPaginaState extends State<PersonaPagina> {
                             return null;
                           } else
                            return listapersonaje.idioma==0?
-                          "Añade mínimo dos jugadores":"Add minimum two players";
+                          "Añade mínimo un caracter":"Add at least one character";
                         },
                       ),
                     ),
@@ -160,7 +167,7 @@ class _PersonaPaginaState extends State<PersonaPagina> {
                         }
                       },
                       child: Text(listapersonaje.idioma==0?
-                          "Agregar":"Add players"),
+                          "Agregar":"Add players",style: TextStyle(fontSize: 16),),
                     ),
                   ),
                   Container(
@@ -176,9 +183,7 @@ class _PersonaPaginaState extends State<PersonaPagina> {
                       ),
                     );
                   }),
-                  Container(
-                    height: size.height * 0.05,
-                  ),
+
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -194,9 +199,10 @@ class _PersonaPaginaState extends State<PersonaPagina> {
                           
                           },
                           child: Text(listapersonaje.idioma==0?
-                          "Omitir":"Skip"),
+                          "Omitir":"Skip",style: TextStyle(fontSize: 16),),
                         ),
                       ),
+                      Container(height: size.height*0.1,),
                       Padding(
                         padding: const EdgeInsets.all(7.0),
                         child: ElevatedButton(
@@ -218,7 +224,7 @@ class _PersonaPaginaState extends State<PersonaPagina> {
                             }
                           },
                           child: Text(listapersonaje.idioma==0?
-                          "Ir a jugar":"Go to play"),
+                          "Ir a jugar":"Go to play",style: TextStyle(fontSize: 16)),
                         ),
                       ),
                     ],
@@ -237,9 +243,13 @@ class _PersonaPaginaState extends State<PersonaPagina> {
         direction: DismissDirection.startToEnd,
         onDismissed: (direction) {
           taskItems.deleteItem(index);
+
+          //Aqui
+          shuffleemoji();
           counterImage--;
         },
         child: Container(
+          alignment: Alignment.topCenter,
           margin: EdgeInsets.all(10),
           child: ListTile(
             title: Text(
@@ -278,7 +288,7 @@ class BackgroundPersonajes extends StatelessWidget {
     return Container(
       child: Column(children: [
         Container(
-          height: size.height * 0.2,
+          height: size.height * 0.23,
         ),
         Stack(
           children: [
@@ -300,7 +310,7 @@ class BackgroundPersonajes extends StatelessWidget {
                           "JUGADORES":"PLAYERS",
                   style: TextStyle(
                     color: Colors.black,
-                    fontSize: 14,
+                    fontSize: 17,
                     fontWeight: FontWeight.w600,
                   ),
                 ),

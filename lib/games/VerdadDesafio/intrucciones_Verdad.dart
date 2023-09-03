@@ -1,37 +1,38 @@
 
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
-import '../../screens/personaProvider/provider.dart';
+import '../../../screens/personaProvider/provider.dart';
 import '../BackgroundInstruccionesGeneral.dart';
-import 'MiBarquito_Juego.dart';
 
-class InstruccionesBarquito extends StatelessWidget {
+class InstruccionesVerdad extends StatelessWidget {
   
 
 
   @override
   Widget build(BuildContext context) {
-    final listapersonaje = Provider.of<ListProvider>(context);
-
+    final listapersonaje=Provider.of<ListProvider>(context);
     return Scaffold(
       body: Scaffold(
         appBar: AppBar(
-        backgroundColor: Color.fromARGB(255, 0, 0, 0),
-        title: Text(listapersonaje.idioma==0?'Barquito':"little boat"),
+          backgroundColor: Colors.black87,
+        title: Text(listapersonaje.idioma==0?'¿Verdad o reto?':"Truth or Dare?"),
         elevation: 0,
         actions: [
           IconButton(onPressed: (){
             Navigator.pushNamed(context,"MenuJuegos" );
           }, 
-          icon: Icon(Icons.keyboard_return))
+          icon: Icon(Icons.videogame_asset))
         ],
         )
       ,
         body: Stack(
           children: [
-            FondoInstrucciones(),
-            CuerpoMeme(),
+            BackgroundgeneralInstru(
+              colorfondo: Color(0xff28A5B6), 
+              imagen1: 'assets/Instrucciones_Verdad2.png', 
+              imagen2: 'assets/Instrucciones_Verdad3.png',),
+            _CuerpoVerdad(
+            ),
 
 
             ],),
@@ -46,13 +47,11 @@ class InstruccionesBarquito extends StatelessWidget {
   }
 }
 
-class CuerpoMeme extends StatelessWidget {
+class _CuerpoVerdad extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
      final size= MediaQuery.of(context).size;
-         final listapersonaje = Provider.of<ListProvider>(context);
-
-
+    final listapersonaje=Provider.of<ListProvider>(context);
     return Column(
       children: [
         SizedBox(height: size.height*0.1,),
@@ -61,7 +60,7 @@ class CuerpoMeme extends StatelessWidget {
               height:size.height*0.7,
               width: size.width*0.85,
               decoration: BoxDecoration(
-                        color: Colors.white,
+                        color: Color.fromARGB(255, 255, 255, 255), 
                         borderRadius: BorderRadius.circular(16),
                         boxShadow: [
                           BoxShadow(
@@ -77,20 +76,16 @@ class CuerpoMeme extends StatelessWidget {
                         
                         ),
                         
-              child: GestureDetector(
-                onTap: ()=> Navigator.pushNamed(context,"Barquitojuego" ),
-                child: CuerpoInstruccionesGeneral(
-                  colorBotones: Color(0xffFCD23D), 
-                  cuerpoInstricciones: listapersonaje.idioma==0?'Un participante en voz alta dirá la frase “llegó un barco cargado de…” y agrega el contenido que se muestre, pierde el que repita o no responda a tiempo.':'A participant aloud the phrase "a ship loaded with..." and adds the content that is displayed on the cards, loses the one that repeats or does not respond in time.', 
-                  imagenInstrucciones: 'assets/Instrucciones_meme3.png', 
-                  rutapagina: 'Barquitojuego', 
-                  size: size,),
-              )
+                        child:CuerpoInstruccionesGeneral(
+                          colorBotones: Color(0xff28A5B6), 
+                          cuerpoInstricciones: listapersonaje.idioma==0?'Cada uno de los jugadores por turno deberan elegir entre contar una verdad o hacer un desafio que salga en la pantalla':"'Each of the players in turn must choose between telling a truth or dare that appears on the screen'", 
+                          imagenInstrucciones: 'assets/Instrucciones_Verdad1.png', 
+                          rutapagina: 'NoemalVerdadoReto', 
+                          size: size,)
+              
+              
            )
-          
-          
-          
-          
+
           ,
         )
       ],

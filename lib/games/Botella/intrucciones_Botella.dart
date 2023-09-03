@@ -1,7 +1,8 @@
 
 import 'package:bebemos/games/Botella/Juego_Botella.dart';
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import '../../screens/personaProvider/provider.dart';
 import '../BackgroundInstruccionesGeneral.dart';
 
 class InstruccionesBotella extends StatelessWidget {
@@ -9,12 +10,15 @@ class InstruccionesBotella extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final listapersonaje = Provider.of<ListProvider>(context);
+    
+    
     return Scaffold(
       body: Scaffold(
         
         appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 54, 46, 37),
-        title: Text('La Botella'),
+        title: Text(listapersonaje.idioma==0?'La Botella':"A bottle"),
         elevation: 0,
         actions: [
           IconButton(onPressed: (){
@@ -47,6 +51,7 @@ class CuerpoBotella extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
      final size= MediaQuery.of(context).size;
+     final listapersonaje = Provider.of<ListProvider>(context);
 
     return Column(
       children: [
@@ -74,7 +79,7 @@ class CuerpoBotella extends StatelessWidget {
                         
               child: CuerpoInstruccionesGeneral(
                 colorBotones: Color(0xFFD9A238), 
-                cuerpoInstricciones: 'Todos se sientan alrededor de la mesa. En el centro pongan en el celuar, la persona que salga en direccion a la botella tendra que hacer el reto que salga en pantalla', 
+                cuerpoInstricciones: listapersonaje.idioma==0?'Todos se sientan alrededor de la mesa. En el centro pongan en el celuar, la persona que salga en direccion a la botella tendra que hacer el reto que salga en pantalla':"Everyone sits around the table. In the center put on the cell phone, the person who comes out in the direction of the bottle will have to do the challenge that appears on the screen", 
                 imagenInstrucciones: 'assets/Instrucciones_botella1.png', 
                 rutapagina: 'JuegoBotella', 
                 size: size,

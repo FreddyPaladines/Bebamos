@@ -1,6 +1,7 @@
 
 import 'dart:math';
 import 'package:get/get.dart';
+import 'package:launch_review/launch_review.dart';
 import 'package:liquid_swipe/liquid_swipe.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
@@ -11,8 +12,8 @@ import '../games/Botella/intrucciones_Botella.dart';
 import '../games/Mibarquito/intrucciones_Mibarquito.dart';
 import '../games/ProbabilidadHay/intrucciones_probalidad.dart';
 import '../games/YoNunca/intrucciones_Nunca.dart';
-import '../games/intrucciones_Kings.dart';
-import '../games/intrucciones_Verdad.dart';
+import '../games/King/intrucciones_Kings.dart';
+import '../games/VerdadDesafio/intrucciones_Verdad.dart';
 import '../screens/personaProvider/provider.dart';
 //import 'package:concentric_transition/concentric_transition.dart';
 
@@ -27,7 +28,9 @@ class Menujuego extends StatelessWidget {
       body: Scaffold(
         body: Stack(
           children: [
-            SplashScreen()
+            SplashScreen(),
+            MessageRateUs(),
+
 
             ],),
       ),
@@ -719,7 +722,7 @@ class _SplashScreen extends State<SplashScreen> {
                     style: SplashScreen.style,
                   ),
                   Text(
-                    "oR",
+                    "or",
                     style: SplashScreen.style,
                   ),
                   Text(
@@ -1043,7 +1046,7 @@ class _SplashScreen extends State<SplashScreen> {
                       liquidController.animateToPage(
                           page: pages.length - 1, duration: 700);
                     },
-                    child: const Text("Saltar hasta el final",
+                    child: Text(listapersonaje.idioma==0?"Saltar hasta el final":"skip to the end",
                         style: TextStyle(color: Colors.black)),
                   ),
                 ),
@@ -1060,7 +1063,7 @@ class _SplashScreen extends State<SplashScreen> {
                               ? 0
                               : liquidController.currentPage + 1);
                     },
-                    child: const Text("Siguiente",
+                    child: Text(listapersonaje.idioma==0?"Siguiente":"next",
                         style: TextStyle(color: Colors.black)),
                   ),
                 ),
@@ -1075,5 +1078,77 @@ class _SplashScreen extends State<SplashScreen> {
     setState(() {
       page = lpage;
     });
+  }
+}
+
+
+
+
+class MessageRateUs extends StatefulWidget {
+  const MessageRateUs({Key? key}) : super(key: key);
+
+  @override
+  State<MessageRateUs> createState() => _MessageRateUsState();
+}
+
+class _MessageRateUsState extends State<MessageRateUs> {
+  @override
+  Widget build(BuildContext context) {
+    final size= MediaQuery.of(context).size;
+
+    return Column(
+      children: [
+        GestureDetector(
+          onTap: (){
+            LaunchReview.launch(
+              androidAppId: "com.freddypaladines98.bebemos"
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              height:size.height*0.09,
+              width: size.width*0.18,
+              decoration: BoxDecoration(
+                            color: Colors.white, 
+                            borderRadius: BorderRadius.circular(16),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.black.withOpacity(0.2),
+                                spreadRadius: 2,
+                                blurRadius: 2,
+                                offset: Offset(2,2)
+                  
+                  
+                              )
+                            ]
+                            
+              ),
+              child: Stack(children: [
+                Container(
+                  alignment: AlignmentDirectional.topCenter,
+                  child: Lottie.asset(
+                          "assets/StartsRateUs.json",
+                          height: size.height*0.65,
+                          width:size.width*0.16,
+                          repeat: false,
+                          
+                          ),
+                ),
+                Column(
+                  children: [
+                    Container(height: size.height*0.065,),
+                    Text("Rated us",style: TextStyle(color: Color(0xFFE4AC07)),),
+                  ],
+                )
+                  
+                  
+              ],),
+                  
+                  
+               ),
+          ),
+        ) ],
+    );
   }
 }

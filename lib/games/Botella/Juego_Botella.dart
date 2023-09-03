@@ -4,7 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../BackgroundInstruccionesGeneral.dart';
-import '../kingV3.dart';
+
+import 'package:provider/provider.dart';
+import '../../screens/personaProvider/provider.dart';
+import '../King/kingV3.dart';
 
 
 
@@ -12,10 +15,11 @@ class Juego_Botella extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    final listapersonaje = Provider.of<ListProvider>(context);
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Color.fromARGB(255, 54, 46, 37),
-        title: Text('Bebamos'),
+        title: Text(listapersonaje.idioma==0?'La Botella':"A bottle"),
         elevation: 0,
         actions: [
           IconButton(onPressed: (){
@@ -126,6 +130,7 @@ class _CuerpoBotellaState extends State<CuerpoBotella>
   Widget build(BuildContext context) {
  final size= MediaQuery.of(context).size;
  List newjuegosBotella= shuffle(juegosBotella);
+ final listapersonaje=Provider.of<ListProvider>(context);
     
 
 
@@ -153,7 +158,7 @@ class _CuerpoBotellaState extends State<CuerpoBotella>
               ),
 
 
-              SizedBox(height: size.height*0.2,),
+              SizedBox(height: size.height*0.1,),
               Visibility(
                 visible: botongirar,
                 child: ElevatedButton(
@@ -180,7 +185,7 @@ class _CuerpoBotellaState extends State<CuerpoBotella>
               
                     });
                   }, 
-                  child: Text("Girar")),
+                  child: Text(listapersonaje.idioma==0?"Girar":"Spin",)),
               ),
               SizedBox(height: 32,),
               Visibility(
@@ -207,7 +212,7 @@ class _CuerpoBotellaState extends State<CuerpoBotella>
 
 
                   }, 
-                  child: Text("Mostrar desafio")),
+                  child: Text(listapersonaje.idioma==0?"Mostrar desafio":"show challenge")),
               ),
 
 
@@ -273,8 +278,7 @@ class _CuerpoBotellaState extends State<CuerpoBotella>
                     height: size.height*0.28 ,
                     width: size.width*0.7,
 
-                       child: Text(newjuegosBotella.first.descripcion,textAlign: TextAlign.center
-
+                       child: Text(listapersonaje.idioma==0?newjuegosBotella.first.descripcion:newjuegosBotella.first.description,textAlign: TextAlign.center
                        //----------------
                         ,style:GoogleFonts.syneMono(
                         fontWeight: FontWeight.bold,
@@ -293,13 +297,7 @@ class _CuerpoBotellaState extends State<CuerpoBotella>
                       fit: BoxFit.fill,
         ),
         ),
-
-            
-
-                    
                   )
-
-
                 ],),
 
             ).animate().fadeIn(),

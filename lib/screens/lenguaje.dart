@@ -50,9 +50,7 @@ class CuerpoInicio extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size= MediaQuery.of(context).size;
-    return GestureDetector(
-      onTap: ()=> Navigator.pushNamed(context,"Persona" ),
-      child: Column(
+    return Column(
         children: [
           SizedBox(height: size.height*0.08,),
           
@@ -66,12 +64,12 @@ class CuerpoInicio extends StatelessWidget {
           ),
           SizedBox(height: size.height*0.03,),
           Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding:  EdgeInsets.symmetric(horizontal: size.width*0.05),
               child: Container(
-                height: size.height * 0.65,
+                height: size.height * 0.63,
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Colors.white54),
+                    color: Colors.white),
               ),
             ),
 
@@ -86,7 +84,7 @@ class CuerpoInicio extends StatelessWidget {
         ],
         
     
-      ),
+
     );
   }
 }
@@ -111,10 +109,13 @@ class _ListaIdiomaState extends State<ListaIdioma> {
     final size= MediaQuery.of(context).size;
     final listapersonaje = Provider.of<ListProvider>(context);
     
-    List lenguaje=["Español","Ingles"];
+    List lenguaje=["Español","English"];
     return Column(
       children: [
-        Container(height: size.height*0.3,),
+        
+        Container(height: size.height*0.27,),
+        Text(listapersonaje.idioma==0?"Seleccionar idioma:":"Select language:",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+         Container(height: size.height*0.05,),
         Wrap(
           direction: Axis.vertical,
           children: List.generate(2, (index) {
@@ -127,17 +128,14 @@ class _ListaIdiomaState extends State<ListaIdioma> {
                     listapersonaje.idioma=index;
                 },
                 child: Container(
-                  width: size.width*0.7,
+                  width: size.width*0.8,
                   height: size.height*0.1,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: selectIndex==index?Colors.grey:Colors.white
+                    color: selectIndex==index?Color(0xFFE928A0):Colors.white
                   ),
-                  
-              
                   margin: EdgeInsets.only(bottom: 10),
-
-                  child: Center(child: Text("${lenguaje[index]}",style: TextStyle(color: selectIndex==index?Colors.black:Colors.black54),)),
+                  child: Center(child: Text("${lenguaje[index]}",style: TextStyle(fontSize: 22,fontWeight: FontWeight.bold,color: selectIndex==index?Colors.black:Colors.black54),)),
                 ),
               ),
             );
@@ -146,19 +144,19 @@ class _ListaIdiomaState extends State<ListaIdioma> {
           ),
         ),
         Container(height: size.height*0.2,),
-        ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            foregroundColor: Colors.black,
-                            backgroundColor: Color(0xFFE928A0), // foreground
+        Container(
+          height: size.height*0.05,
+          child: ElevatedButton(
+                            style: ElevatedButton.styleFrom(
+                              foregroundColor: Colors.black,
+                              backgroundColor: Color(0xFFE928A0), // foreground
+                            ),
+                            onPressed: () {
+                              Navigator.pushNamed(context, "Persona");
+                            },
+                            child: Text(listapersonaje.idioma==0?'Continuar':"Next",style: TextStyle(fontSize: 17,),),
                           ),
-                          onPressed: () {
-                            Navigator.pushNamed(context, "Persona");
-                            
-
-                          
-                          },
-                          child: Text(' Continuar '),
-                        ),
+        ),
 
 
       ],

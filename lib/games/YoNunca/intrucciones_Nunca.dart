@@ -1,18 +1,22 @@
 
 import 'package:flutter/material.dart';
-
+import 'package:provider/provider.dart';
+import '../../screens/personaProvider/provider.dart';
 import '../BackgroundInstruccionesGeneral.dart';
 
 class InstruccionesNunca extends StatelessWidget {
+  
 
 
   @override
   Widget build(BuildContext context) {
+    final listapersonaje = Provider.of<ListProvider>(context);
+
     return Scaffold(
       body: Scaffold(
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 79, 0, 153),
-        title: Text('Bebamos'),
+        title: Text(listapersonaje.idioma==0?'Nunca nunca':"Never have i ever"),
         elevation: 0,
         actions: [
           IconButton(onPressed: (){
@@ -45,6 +49,7 @@ class CuerpoNunca extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
      final size= MediaQuery.of(context).size;
+    final listapersonaje=Provider.of<ListProvider>(context);
 
     return Column(
       children: [
@@ -73,7 +78,7 @@ class CuerpoNunca extends StatelessWidget {
               child: CuerpoInstruccionesGeneral(
                 size: size, 
                 colorBotones: Color.fromARGB(255, 153, 153, 153), 
-                cuerpoInstricciones: 'En la pantalla saldrán preguntas al azar, los participantes que han hecho lo mencionado alguna vez deben beber una cantidad fijada por el grupo"', 
+                cuerpoInstricciones: listapersonaje.idioma==0?'En la pantalla saldrán preguntas al azar, los participantes que han hecho lo mencionado alguna vez deben beber una cantidad fijada por el grupo"':'Random questions will appear on the screen, the participants who have ever done the mentioned thing must drink an amount set by the group', 
                 imagenInstrucciones: 'assets/Instrucciones_Nunca2.png', 
                 rutapagina: 'YoNuncaPrincipal',),
            )

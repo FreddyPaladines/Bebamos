@@ -1,12 +1,11 @@
 
 import 'package:bebemos/games/Botella/Juego_Botella.dart';
-import 'package:bebemos/games/Normal_Reto_Resp.dart';
-import 'package:bebemos/games/Normal_VerdadReto.dart';
-import 'package:bebemos/games/Normal_Verdad_Resp.dart';
+import 'package:bebemos/games/VerdadDesafio/Normal_Reto_Resp.dart';
+import 'package:bebemos/games/VerdadDesafio/Normal_VerdadReto.dart';
+import 'package:bebemos/games/VerdadDesafio/Normal_Verdad_Resp.dart';
 import 'package:bebemos/games/Mibarquito/MiBarquito_Juego.dart';
-import 'package:bebemos/games/Verdad_Reto.dart';
 import 'package:bebemos/games/YoNunca/YoNunca_Principal.dart';
-import 'package:bebemos/games/kingV3.dart';
+import 'package:bebemos/games/King/kingV3.dart';
 import 'package:bebemos/screens/personaProvider/personajes.dart';
 import 'package:bebemos/screens/personaProvider/provider.dart';
 import 'package:bebemos/widgets/Inicio.dart';
@@ -20,9 +19,8 @@ import 'games/Mibarquito/intrucciones_Mibarquito.dart';
 import 'games/ProbabilidadHay/intrucciones_probalidad.dart';
 import 'games/ProbabilidadHay/probabilidad_juego.dart';
 import 'games/YoNunca/intrucciones_Nunca.dart';
-import 'games/intrucciones_Kings.dart';
-import 'games/intrucciones_Verdad.dart';
-import 'games/kingV4.dart';
+import 'games/King/intrucciones_Kings.dart';
+import 'games/VerdadDesafio/intrucciones_Verdad.dart';
 import 'widgets/menu_Juegos.dart';
 
 
@@ -47,8 +45,6 @@ class MyApp extends StatelessWidget {
           'Lenguaje': (_) =>LenguajePagina(),
           'Persona': ( _ ) => PersonaPagina(),
           "kingv3": ( _ ) =>KingjuegoV3(),
-          "kingv4": ( _ ) =>KingjuegoV4(),
-          "VerdadoReto": ( _ ) =>VerdadoReto(),
           "NoemalVerdadoReto": ( _ ) =>NormalVerdadoReto(),
           "NoemalVerdadoResp": ( _ ) =>NormalVerdadoResp(),
           "NoemalRetoResp": ( _ ) =>NormalRetoResp(),

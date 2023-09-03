@@ -2,6 +2,8 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:provider/provider.dart';
+import '../../screens/personaProvider/provider.dart';
 
 
 class BackgroundgeneralInstru extends StatelessWidget {
@@ -88,12 +90,13 @@ class CuerpoInstruccionesGeneral extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final listapersonaje = Provider.of<ListProvider>(context);
     return Column(
       children: [
         SizedBox(height:size.height*0.009),
         Padding(
           padding: EdgeInsets.all(12),
-          child: Text ("INSTRUCCIONES", 
+          child: Text (listapersonaje.idioma==0?"INSTRUCCIONES":"INSTRUCTIONS", 
           style: TextStyle(
                 color: Colors.black,
                 fontSize: 25,
@@ -153,7 +156,7 @@ class CuerpoInstruccionesGeneral extends StatelessWidget {
                 ElevatedButton(
                   
                   
-                  child: Text("Comenzar",style: TextStyle(
+                  child: Text(listapersonaje.idioma==0?"Comenzar":"Play",style: TextStyle(
                         color: Colors.black,
                         fontSize:20,
                         fontWeight: FontWeight.w600,)),

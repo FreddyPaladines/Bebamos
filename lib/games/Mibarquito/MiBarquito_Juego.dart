@@ -1,23 +1,27 @@
 import 'package:flutter/material.dart';
 import 'package:swipe_cards/swipe_cards.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
+import '../../screens/personaProvider/provider.dart';
+
 
 class Barquitojuego extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+    final listapersonaje = Provider.of<ListProvider>(context);
     return Scaffold(
       body: Scaffold(
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 0, 0, 0),
-          title: Text('Bebamos'),
+          title: Text(listapersonaje.idioma==0?'Barquito':"little boat"),
           elevation: 0,
           actions: [
             IconButton(
                 onPressed: () {
                   Navigator.pushNamed(context, "MenuJuegos");
                 },
-                icon: Icon(Icons.keyboard_return))
+                icon: Icon(Icons.videogame_asset))
           ],
         ),
         body: Stack(
@@ -30,7 +34,7 @@ class Barquitojuego extends StatelessWidget {
                   padding: const EdgeInsets.only(left:20,right: 10),
                   child: Container(
                     child: Text(
-                      "Mi barquito viene cargado de:",
+                      listapersonaje.idioma==0?"Mi barquito viene cargado de:":"The Ship Comes Loaded",
                       textAlign: TextAlign.center,
                       style: GoogleFonts.amaticSc(
                         fontWeight: FontWeight.bold,
@@ -55,11 +59,12 @@ class Barquitojuego extends StatelessWidget {
 
 
 class Content {
-  final String? text;
+  final String? texto;
+   final String? text;
   final String? image;
   final Color? color;
 
-  Content({this.text, this.color, this.image});
+  Content({this.texto,this.text, this.color, this.image});
 }
 
 class MyHomePage extends StatefulWidget {
@@ -75,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
   List<SwipeItem> _swipeItems = <SwipeItem>[];
   MatchEngine? _matchEngine;
   GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey();
-  List<String> _names = [
+  List<String> _nombres = [
     "Marcas de carros",
     "Vegetales",
     "Paises",
@@ -108,6 +113,40 @@ class _MyHomePageState extends State<MyHomePage> {
     "Tipo de flores",
     "Profesiones",
     "Nombre de cientificos/as famosos",
+  ];
+  List<String> _names = [
+       "Car Brands",
+       "Vegetables",
+       "Countries",
+       "Cities",
+       "Farm animals",
+       "makeup brands",
+       "Marine animals",
+       "Birds",
+       "reptiles",
+       "Brand of condoms",
+       "Videogame",
+       "Films",
+       "TV series",
+       "Coffee shops",
+       "anime",
+       "porn pages",
+       "Book Titles",
+       "Sex Positions",
+       "insects",
+       "Pokemon",
+       "DC Superheroes",
+       "Marvel Superheroes",
+       "Pop Singers",
+       "Actors or Actresses with Oscars",
+       "Social networks",
+       "Sports",
+       "Football teams",
+       "alcoholic beverages",
+       "synonymous with penis",
+       "kind of flowers",
+       "Professions",
+       "Name of famous scientists",
   ];
   List<String> _image = [
     "Barquito_1.png",
@@ -186,7 +225,7 @@ class _MyHomePageState extends State<MyHomePage> {
     for (int i in _indice) {
       if (i == 0) {}
       _swipeItems.add(SwipeItem(
-        content: Content(text: _names[i], image: _image[i]),
+        content: Content(texto: _nombres[i], image: _image[i],text: _names[i]),
       ));
     }
 
@@ -196,6 +235,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
+    final listapersonaje = Provider.of<ListProvider>(context);
     return Container(
         child: Stack(children: [
       Center(
@@ -241,8 +281,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           ),
                           Expanded(
                             child: FittedBox(
-                              child: Text(
-                                _swipeItems[index].content.text,
+                              child: Text(listapersonaje.idioma==0?_swipeItems[index].content.texto:_swipeItems[index].content.text,
                                 style: GoogleFonts.amaticSc(
                         fontWeight: FontWeight.bold,
                           fontSize:50,

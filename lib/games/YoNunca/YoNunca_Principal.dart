@@ -1,6 +1,8 @@
 
-import 'package:bebemos/games/kingV3.dart';
+import 'package:bebemos/games/King/kingV3.dart';
 import 'package:bebemos/widgets/Datos.dart';
+import 'package:provider/provider.dart';
+import '../../screens/personaProvider/provider.dart';
 
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
@@ -89,11 +91,12 @@ class Cuerpo extends StatelessWidget {
 
 
 class Card_swiperNunca  extends StatelessWidget {
- 
+
 
   @override
   Widget build(BuildContext context) {
 
+  final listapersonaje=Provider.of<ListProvider>(context);
 
 
 
@@ -134,7 +137,7 @@ class Card_swiperNunca  extends StatelessWidget {
                       children: [
                         SizedBox(height: size.height*0.02,),
 
-                        Text("YO NUNCA NUNCA ",
+                        Text(listapersonaje.idioma==0?"YO NUNCA NUNCA":"NEVER HAVE I EVER",
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 30,
                           fontWeight: FontWeight.bold,
@@ -148,7 +151,7 @@ class Card_swiperNunca  extends StatelessWidget {
                           margin: EdgeInsets.symmetric(horizontal: size.width*0.05,),
                           height:  size.height*0.2,
                           width:  size.height*0.4,
-                          child: Text(newlista[index].descripcion,
+                          child: Text(listapersonaje.idioma==0?newlista[index].descripcion:newlista[index].description,
                             style: TextStyle(
                               color: Colors.black,
                               fontSize:18,
@@ -177,7 +180,7 @@ class Card_swiperNunca  extends StatelessWidget {
                         ),
                         SizedBox(height: size.height*0.02,),
 
-                        Text("Desplazar a la derecha ",
+                        Text(listapersonaje.idioma==0?"Desplazar a la derecha":"scroll right",
                           textAlign: TextAlign.center,
                           style: TextStyle(fontSize: 15,
                           fontWeight: FontWeight.bold,
